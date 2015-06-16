@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://svn.code.sf.net/p/algone/code/xrem/rng_html.xsl"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0" 
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+  xmlns:h="http://www.w3.org/1999/xhtml" 
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+  ns="http://www.tei-c.org/ns/1.0"
+  xml:lang="fr"
+>
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <img src="http://ducange.enc.sorbonne.fr/doc/colonne.jpg" align="right"/>
+    <h1><a href="http://ducange.enc.sorbonne.fr/">Du Cange</a>, Schéma d'encodage</h1>
+    <p>
+Cette page explique la structure d'informatisation du
+<i>Glossarium mediae et infimae latinitatis</i> de Du Cange ; dans l'édition
+de Favre (1883-87). Ce schéma décrit de manière formelle une “grammaire” et un “vocabulaire”
+(conformes au format <a href="http://www.tei-c.org/release/doc/tei-p5-doc/html/">TEI-P5</a>).
+Il fixe les règles d'articulation des balises employées pour structurer le texte du
+<i>Glossarium</i>. Le <a href="http://ducange.enc.sorbonne.fr/src/schema.rng">schéma</a> lui même est livré avec les sources
+du texte.
+  </p>
+    <ul>
+      <li>2007—2011, Frédéric Glorieux (École nationale des chartes) — conception intiale et maintenance</li>
+    </ul>
+    <p>
+Ordre d'exposition selon l'approfondissement du balisage :
+  </p>
+    <ul>
+      <li><a href="#bloc-typo">Typographie</a> — structuration typographique visible</li>
+      <li><a href="#bloc-lexico">Mise en ligne</a> — opérations de normalisation nécessaires avant mise en ligne.</li>
+      <li><a href="#fonctions">Résolution de l'italique et des petites capitales</a> — fonctions possibles de le typographie ambigue.</li>
+      <li><a href="#bloc-linguistique">Corpus linguistique</a> — pour une base lexicale et un corpus annoté sur les citations en latin médiéval.</li>
+    </ul>
+    <p class="remark">NOTE : Cet exemple d’article illustre la variété des faits médiévaux dont peut témoigner le <i>Du Cange</i>.
+      Le latin permettait aux érudits classiques une exactitude parfois plus difficile en français.
+    </p>
+    <a href="http://ducange.enc.sorbonne.fr/PUTAGIUM">PUTAGIUM</a>
+    <a:example>
+      <entry xml:id="PUTAGIUM" rend="ducange">
+        <dictScrap xml:id="PUTAGIUM-1"><form rend="b">PUTAGIUM</form>, Fornicatio, meretricatus, de fœmina dicitur. Regiam Majestatem lib. 2. cap. 49 :
+            <quote>Quod generaliter dici solet, quod Putagium hæreditatem non adimit, intelligitur
+            de Putagio matris, quia filius est hæres legitimus, quem nuptiæ demonstrant.</quote>
+          Vide Bractonum lib. 2. cap. 37. § 6. et Fletam lib. 1. cap. 15. § 4. Gallis <hi rend="i">Putage</hi>.
+          Charta ann. 1247. in Tabular. Campaniæ fol. 343 : <quote>La fame, qui dira vilonnie à
+            autre, si come de Putage, payera 5. sols, ou portera la pierre toute nuë en sa chemise à
+            la Procession, et celle-là poindra aprés an la nage d'un aguillon, et s'elle disoit
+            autre villonnie, qui atourt à honte de cors, ele paieroit 3. sols, et li homs
+          ainsin.</quote> Le Roman <hi rend="i">de Vacces</hi> MS. : <quote><l>Maint home a essillié et torné à servage,</l><l>Et mis par poureté mainte feme au Putage.</l></quote> [...].</dictScrap>
+        <dictScrap xml:id="PUTAGIUM-2" rend="carpentier">Glossar. Provinc. Lat. ex
+          Cod. reg. 7657 : <gloss>Putaneiar, Prov. fornicari.</gloss> Charta <cb n="577c"/> Phil.
+          III. ann. 1283. in Reg. 61. Chartoph. reg. ch. 389 : <quote>Dimisimus Majori et
+            communitati villæ de Vernolio emendas et cognitiones, quas in dicta villa et ejus
+            livreis habebamus in casibus infrascriptis, videlicet.... de Putagio, de maledictis, de
+            pravis denariatis carnium, piscium, etc.</quote></dictScrap>
+        <!-- [...] -->
+      </entry>
+    </a:example>
+    <br style="clear:both"/>
+    <table class="data">
+      <caption>80 Mo de XML-TEI ; 45 millions de signes ; segment moyen : 40 signes</caption>
+      <tr>
+        <th width="40%">balise</th>
+        <th width="20">effectif</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_quote">quote</a>
+        </td>
+        <td align="right">155 277</td>
+        <td>Citations</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_dictScrap">dictScrap</a>
+        </td>
+        <td align="right">135 829</td>
+        <td>Alinéas</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_form">form</a>
+        </td>
+        <td align="right">126 798</td>
+        <td>Vedettes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_hi-i">hi</a>
+
+        </td>
+        <td align="right">119 730</td>
+        <td>Italique non résolu</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_entry">entry</a>
+        </td>
+        <td align="right">90 388</td>
+        <td>Articles</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_ref">ref</a>
+        </td>
+        <td align="right">54 362</td>
+        <td>Renvois</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_num">num</a>
+        </td>
+        <td align="right">25 257</td>
+        <td>Numéros</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_add">add</a>
+        </td>
+        <td align="right">23 872</td>
+        <td>Additions</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_l">l</a>
+        </td>
+        <td align="right">21 231</td>
+        <td>Ligne de citation en vers</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cb">cb</a>
+        </td>
+        <td align="right">14 952</td>
+        <td>Colonnes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_foreign">foreign</a>
+        </td>
+        <td align="right">14 855</td>
+        <td>Mots étrangers</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_note">note</a>
+        </td>
+        <td align="right">8 722</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_pb">pb</a>
+        </td>
+        <td align="right">5 008</td>
+        <td>Sauts de page</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_seg">seg</a>
+        </td>
+        <td align="right">4 377</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_persName">persName</a>
+        </td>
+        <td align="right">3 121</td>
+        <td>Auteurs</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_oVar">oVar</a>
+        </td>
+        <td align="right">1 838</td>
+        <td>Rappel de la vedette</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cell">cell</a>
+        </td>
+        <td align="right">995</td>
+        <td>Cellule de tableau</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_p">p</a>
+        </td>
+        <td align="right">924</td>
+        <td>Articles complexes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_mentioned">mentioned</a>
+        </td>
+        <td align="right">692</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_row">row</a>
+        </td>
+        <td align="right">474</td>
+        <td>Ligne de tableau</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_bibl">bibl</a>
+        </td>
+        <td align="right">417</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_lbl">lbl</a>
+        </td>
+        <td align="right">289</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cit">cit</a>
+        </td>
+        <td align="right">288</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_item">item</a>
+        </td>
+        <td align="right">256</td>
+        <td>Dans une liste</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_title">title</a>
+        </td>
+        <td align="right">159</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_gloss">gloss</a>
+        </td>
+        <td align="right">98</td>
+        <td>Glose, généralement citée d'un glossaire</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_abbr">abbr</a>
+        </td>
+        <td align="right">88</td>
+        <td>Dans certaines citations</td>
+      </tr>
+      <tr>
+        <td align="right">q</td>
+        <td align="right">44</td>
+        <td>Dans certaines notes</td>
+      </tr>
+      <tr>
+        <td align="right">respStmt, resp, name, change, addrLine, funder, idno</td>
+        <td align="right">n x 24</td>
+        <td>Éléments répétés dans l'entête TEI</td>
+      </tr>
+      <tr>
+        <td align="right">TEI, text, body, teiHeader, titleStmt, fileDesc, principal, seriesStmt, extent, author, availability, date, publicationStmt, publisher, address, encodingDesc, sourceDesc, revisionDesc, editorialDecl, samplingDecl, projectDesc</td>
+        <td align="right">24</td>
+        <td>fichiers TEI avec cartouche d'entête</td>
+      </tr>
+      <tr>
+        <td align="right">figure</td>
+        <td align="right">19</td>
+        <td>À réduire en listes ou en tables</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_table">table</a>
+        </td>
+        <td align="right">12</td>
+        <td>Pour articles complexes</td>
+      </tr>
+      <!--
+      <tr><td align="right">lb</td><td align="right">10</td><td align="right"></td></tr>
+      <tr><td align="right">lg</td><td align="right">9</td><td align="right"></td></tr>
+      -->
+      <tr>
+        <td align="right">head</td>
+        <td align="right">6</td>
+        <td>Listes et tables titrées</td>
+      </tr>
+      <tr>
+        <td align="right">list</td>
+        <td align="right">6</td>
+        <td>Pour articles complexes</td>
+      </tr>
+    </table>
+    <h2 id="bloc-typo">Balisage typographique</h2>
+    <p>
+    Ces déclarations formelles résument les observables attendus de
+    la prestation de numérisation.
+      </p>
+  </a:documentation>
+  <define name="entry">
+    <element name="entry">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">“Article” du dictionnaire.
+Le corps visible du dictionnaire est séparé en alinéas, dont certains commencent
+avec un mot en majuscules grasses. On appellera “vedette” ces mots en gras.
+On appellera “article” un groupe d'alinéas commençant par une vedette et s'arrêtant
+avant la suivante.
+      </a:documentation>
+      <ref name="attribution"/>
+      <ref name="id"/>
+      <oneOrMore>
+        <choice>
+          <ref name="dictScrap"/>
+          <ref name="breaks"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dictScrap">
+    <element name="dictScrap">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Alinéa.
+Les articles du “Glossarium” sont très peu systématiques. Ce serait une erreur d'interpréter
+les alinéas comme des “sens” de la vedette (voir TEI &lt;sense&gt;).
+L'élément &lt;dictScrap&gt; est beaucoup plus approprié :
+« encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. ».
+      </a:documentation>
+      <ref name="id"/>
+      <optional>
+        <ref name="attribution"/>
+      </optional>
+      <optional>
+        <attribute name="rendition">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Dans quelques rares articles comportant des listes (ex : Moneta), un paragraphe centré peut servir de séparateur, on le signale par la valeur "center" de l'attribut <tt>rend</tt>.</a:documentation>
+          <choice>
+            <value h:title="Paragraphe centré">center</value>
+            <value h:title="Paragraphe à gauche">left</value>
+            <value h:title="Paragraphe à droite">right</value>
+          </choice>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="form"/>
+          <ref name="table"/>
+          <ref name="list"/>
+          <ref name="add"/>
+          <ref name="quote"/>
+          <ref name="cit"/>
+          <ref name="sc"/>
+          <ref name="i"/>
+          <ref name="figure"/>
+          <ref name="inline"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="add">
+    <element name="add">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Ajouts éditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des repères pour
+la segmentation des citations en italique.
+      </a:documentation>
+      <ref name="attribution"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="mentioned"/>
+          <ref name="foreign"/>
+          <ref name="quote"/>
+          <ref name="note"/>
+          <ref name="cit"/>
+          <ref name="sc"/>
+          <ref name="i"/>
+          <ref name="inline"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="i">
+    <element name="hi">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit généralement (+4/5) pas contenir de ponctuation. Ne surtout pas employer cet élément pour des citations &lt;quote&gt; ou des renvois &lt;ref&gt;.</a:documentation>
+      <attribute name="rend">
+        <value>i</value>
+      </attribute>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="num"/>
+          <ref name="sup"/>
+          <ref name="abbr"/>
+          <ref name="breaks"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="sc">
+    <element name="hi">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Petites capitales, généralement des mots importants pour l'article, mais de fonction difficile à établir. Attention aux citations qui sont des inscriptions. Attention aux chiffres romains en petites capitales, utiliser &lt;num&gt;.</a:documentation>
+      <attribute name="rend">
+        <value>sc</value>
+      </attribute>
+      <text/>
+    </element>
+  </define>
+  <define name="sup">
+    <element name="hi">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+        <sup>exposant</sup>
+      </a:documentation>
+      <attribute name="rend">
+        <value>sup</value>
+      </attribute>
+      <text/>
+    </element>
+  </define>
+  <define name="sub">
+    <element name="hi">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+        <sub>indice</sub>
+      </a:documentation>
+      <attribute name="rend">
+        <value>sub</value>
+      </attribute>
+      <text/>
+    </element>
+  </define>
+  <define name="breaks">
+    <a:documentation xmlns="http://www.w3.org/1999/xhtml">Sauts de page et de colonne insérables à presque tout endroit du document</a:documentation>
+    <choice>
+      <element name="cb">
+        <a:documentation xmlns="http://www.w3.org/1999/xhtml">Conservation des sauts de colonne de l'édition imprimée, notamment pour lien à l'image de la colonne.</a:documentation>
+        <empty/>
+        <attribute name="n">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Le numéro de colonne est obligatoire, par exemple pour la troisième colonne de la page 245 : 245c.</a:documentation>
+        </attribute>
+      </element>
+      <element name="pb">
+        <a:documentation xmlns="http://www.w3.org/1999/xhtml">Conservation des sauts de page de l'édition imprimée originale.</a:documentation>
+        <attribute name="n">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Le numéro de page est obligatoire.</a:documentation>
+        </attribute>
+        <empty/>
+      </element>
+    </choice>
+  </define>
+  <define name="lb">
+    <element name="lb">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Saut de ligne (ne pas en abuser).</a:documentation>
+      <empty/>
+    </element>
+  </define>
+  <define name="rend">
+    <attribute name="rend">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Certains éléments de niveau bloc (citations, tables), ont une mise en forme
+typographique globale qu'il est plus économe de mentionner au niveau du
+conteneur. Ainsi par exemple, des inscriptions paraissent en petites capitales dans la version imprimée,
+mais ce sont des citations, ne pas utiliser <a href="#el-sc">&lt;sc&gt;</a> en ce cas.
+      </a:documentation>
+      <choice>
+        <value h:title="Small Caps, petites capitales">sc</value>
+        <value h:title="Italique">i</value>
+        <value h:title="Bold, gras">b</value>
+        <value h:title="Paragraphe centré">center</value>
+        <value h:title="Paragraphe centré">center sc</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="l">
+    <element name="l">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,
+    l'alinéa qui précède le vers plus court sera conservé par deux espaces dans l'élément l.</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="note"/>
+          <ref name="inline"/>
+        </choice>
+      </zeroOrMore>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+      <optional>
+        <ref name="lang">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Certaines citations avec du grec</a:documentation>
+        </ref>
+      </optional>
+    </element>
+  </define>
+  <define name="p">
+    <element name="p">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Certaines citations longues requièrent une division en paragraphes. Ce cas est rare,
+et concernent des articles longs, les dissertations de Du Cange.
+      </a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="inline"/>
+          <ref name="sc"/>
+          <ref name="note"/>
+          <ref name="l"/>
+          <ref name="add"/>
+        </choice>
+      </zeroOrMore>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+    </element>
+  </define>
+  <define name="head">
+    <element name="head">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+  Titres de tables et de listes.
+      </a:documentation>
+      <text/>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+    </element>
+  </define>
+  <define name="table">
+    <element name="table">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Certaines parties d'articles sont composées comme des tables.</a:documentation>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+      <optional>
+        <ref name="head"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <element name="row">
+            <oneOrMore>
+              <element name="cell">
+                <optional>
+                  <attribute name="cols"/>
+                </optional>
+                <optional>
+                  <attribute name="rend"/>
+                </optional>
+                <zeroOrMore>
+                  <choice>
+                    <text/>
+                    <ref name="add"/>
+                    <ref name="inline"/>
+                    <ref name="i"/>
+                    <ref name="lb"/>
+                  </choice>
+                </zeroOrMore>
+              </element>
+            </oneOrMore>
+          </element>
+          <ref name="breaks"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="list">
+    <element name="list">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Certains articles comportent de longues listes.</a:documentation>
+      <optional>
+        <ref name="head"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <element name="item">
+            <zeroOrMore>
+              <choice>
+                <text/>
+                <ref name="inline"/>
+              </choice>
+            </zeroOrMore>
+          </element>
+          <ref name="breaks"/>
+        </choice>
+      </oneOrMore>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+    </element>
+  </define>
+  <!--
+  <define name="unclear">
+    <element name="unclear">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Balisage provisoire, encadrait des caractères ayant posé des problèmes d'interprétation, supprimé après correction.</a:documentation>
+      <text/>
+    </element>
+  </define>
+  -->
+  <!-- PUBLICATION -->
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <h2 id="bloc-lexico">Enrichissement lexicographique.</h2>
+    <p>
+    Les informations balisées qui suivent ne sont pas requises à l'étape du balisage typographique.
+    Elles définissent le programme d'enrichissement lexicographique nécessaire
+    de la source avant mise en ligne. Les étapes suivantes doivent être appliquées
+</p>
+    <ol>
+      <li>Etablissement des vedettes et sous-vedettes <tt>form</tt> (automatique à vérifier).</li>
+      <li>Attribution des segments <tt>@resp</tt> selon les puces, suppression des puces et des crochets d'addition.</li>
+      <li>Identifiants d'article (automatique).</li>
+      <li>Intégrité relationnelle (vérifier l'identification des cibles des renvois).</li>
+    </ol>
+  </a:documentation>
+  <define name="form">
+    <element name="form">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Le Glossarium distingue typographiquement des mots en tête d'alinéa.
+La présentation ne donne aucun moyen de déduire le statut linguistique de ces mots 
+dans le lexique médiolatin (vedette, variante, forme fléchie, expression...).
+Ce travail est prévu dans le projet ANR Omnia, qui pour aboutir à un lemmatiseur du latin médiéval,
+établit un lexique hiérarchisé de la langue.
+      </a:documentation>
+      <attribute name="rend">
+        <choice>
+          <value h:title="Gras, vedette commençant un article">b</value>
+          <value h:title="Petites capitales, sous-vedette">sc</value>
+          <value h:title="Italique, sous-sous-vedette">i</value>
+        </choice>
+      </attribute>
+      <optional>
+        <attribute name="type">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Le typage des vedettes commence fin 2009, à partir du lexique Omnia, et des corrections par des latinistes. La tâche pourra durer.</a:documentation>
+          <choice>
+            <value h:title="Lemme selon le lexique Omnia">lemma</value>
+            <value h:title="Variante graphique selon le lexique Omnia">variant</value>
+            <value h:title="Entrée fléchie, déclinaison ou conjugaison">inflected</value>
+            <value h:title="Mot composé">compound</value>
+            <value h:title="Expression">phrase</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="expand">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <p>Certaines entrées, notamment chez Favre, indiquent une variante, par exemple <b>RETRANGA, -STRENGA</b>. La forme <i>-strenga</i> serait difficilement exploitable automatiquement, l'attribut <code>@expand</code> permet d'indiquer la variante <i>restrenga</i>.</p>
+          </a:documentation>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="norm">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Favre introduit des variantes indiquées comme des suffixes du lemme principal en adresse,
+une valeur normalisée facilite les traitements.</a:documentation>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="num"/>
+          <element name="seg">
+            <text/>
+          </element>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <p>
+Les vedettes et sous-vedettes sont désormais vérifiées, afin d'assurer le découpage
+des articles et leur identification.
+    </p>
+    <p>
+En général, les formes en capitales grasses sont des vedettes.
+L'élément form peut contenir un numéro d'homographe, et parfois,
+une forme en petites capitales lorsqu'elle n'est pas séparée par une virgule ou un point.
+    </p>
+    <p>
+Une forme en petites capitales en tête de paragraphe, introduit une sous-vedette, susceptible
+d'être précisées par des segments italique qui ne sont pas séparés d'une ponctuation.
+    </p>
+    <p>
+Un post-traitement appliquera un élément form par dessus les variations typographiques
+repérérées avec l'élément hi, afin de conserver l'apparence de l'original imprimé.
+    </p>
+    <p>
+Le niveau d'une vedette est distingué par l'attribut @rend, conservant la typographie
+imprimée (gras, petites capitales, italique).
+    </p>
+  </a:documentation>
+  <define name="id">
+    <attribute name="xml:id">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    Identifiant d'article construit automatiquement sur la vedette et numéro d'homographe, obligatoire après traitement.
+      </a:documentation>
+    </attribute>
+  </define>
+  <define name="attribution" combine="interleave">
+    <attribute name="rend">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Attribution d'un ajout selon la légende siglæ, sera appliquée automatiquement sur les puces.</a:documentation>
+      <choice>
+        <value h:title="Du Cange, Charles Du Fresne, 1678">ducange</value>
+        <value h:title="Bénédictins de St. Maur, 1733-1736">benedictin</value>
+        <value h:title="Bénédictins de St. Maur, 1733-1736, glose">benedictin glose</value>
+        <value h:title="Carpentier, Pierre, 1766">carpentier</value>
+        <value h:title="Henschel, Louis, 1840-1850.">henschel</value>
+        <value h:title="Favre, Léopold, 1883-1887">favre</value>
+        <value h:title="École nationale des chartes, 2007-">enc</value>
+      </choice>
+    </attribute>
+  </define>
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <h2 id="fonctions">Désambiguïsation de l'italique (et des petites capitales)</h2>
+    <p>
+Cette section énumère et documente les fonctions permettant de qualifier l'italique typographique.
+Elle est conçue pour servir de guide aux éditeurs qui reprennent le balisage du prestataire,
+afin de qualifier plus précisément la typographie.
+    </p>
+  </a:documentation>
+  <define name="quote">
+    <element name="quote">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Texte cité rattachable à une référence bibliographique. Le but de ce balisage est surtout
+de réunir un corpus varié de langue médiévale (latin ou vernaculaire). Ces citations apparaîtront en bloc 
+décroché à l'écran. On décidera qu'en général, une citation doit comprendre au moins une phrase complète.
+      </a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="l"/>
+          <ref name="lg"/>
+          <ref name="corr"/>
+          <ref name="add"/>
+          <ref name="p"/>
+          <ref name="list"/>
+          <ref name="table"/>
+          <ref name="note"/>
+          <ref name="figure"/>
+          <ref name="inline"/>
+        </choice>
+      </zeroOrMore>
+      <optional>
+        <ref name="rend"/>
+      </optional>
+      <!-- la langue des citations, pour l'instant optionnel -->
+      <optional>
+        <ref name="lang"/>
+      </optional>
+    </element>
+  </define>
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <p>L'imprimé distingue les types suivants de citations :</p>
+    <ul>
+      <li>Prose : italique en cours de paragraphe</li>
+      <li>Inscription : en petite capitales (cas rare)</li>
+      <li>Vers : bloc décroché de lignes en corps plus petit</li>
+    </ul>
+    <p>
+La reconnaissance des vers pose peu de problèmes. Les inscriptions en petites capitales sont assez
+mal reconnues mais peu nombreuses. Un gros problème concerne
+le découpage des citations en prose. La pose des balises provient initialement de la règle :
+« texte italique suivant ‘:’ ». Il en résulte beaucoup d'erreurs, que l'on essaie
+de lister ici en ordre de fréquence.
+        </p>
+    <dl class="dl">
+      <dt>Citations trop courtes</dt>
+      <dd>
+        <p><b>DAE</b> [...] Papias in cod. 7609 : <i>Dahe, soctie gni</i>.<br/>
+(le <i>Papias</i> est un glossaire, l'apparente citation est plutôt une glose, la balise &lt;oVar&gt; n'est pas essentielle.)
+<div class="xml"><a:example>Papias in cod. 7609 : <gloss><oVar>Dahe</oVar>, soctie gni</gloss></a:example></div>
+            </p>
+        <p><b>EXTERNARE</b> [...] Glossar. Gall. Lat. ex Cod. reg. 7684 : <i>Externare, Estranger</i>.<br/>
+(extrait d'un glossaire français — latin, rappel de la vedette et mot étranger)
+<div class="xml"><a:example>Glossar. Gall. Lat. ex Cod. reg. 7684 : <gloss><oVar>Externare</oVar>, <foreign xml:lang="fro">Estranger</foreign></gloss>.</a:example></div>
+            </p>
+        <p><b>EBEARE</b>, [...] apud Martinium : <i>Ebeo, <foreign xml:lang="grc">ἀπομαϰαρίξω</foreign></i>.
+<div class="xml"><a:example>apud Martinium : <gloss><oVar>Ebeo</oVar>, <foreign xml:lang="grc">ἀπομαϰαρίξω</foreign></gloss>.</a:example></div>
+        </p>
+      </dd>
+      <dt>Citations interrompues</dt>
+      <dd>
+        <p><b>ECCLESIA</b> [...] Et cap. 25 : <i>Catholicum vere esse</i> ait, <i>qui in fide fixus et stabilis permanens,
+quidquid universaliter antiquitus Ecclesiam Catholicam tenuisse cognoverit, id solum
+sibi tenendum credendumque decernit.</i><br/>
+(La citation a été reconnue automatiquement comme trop courte, car elle est interrompue par le mot “ait” en caractères droits dans l'italique)
+<div class="xml"><a:example>Et cap. 25 : <quote>Catholicum vere esse <mentioned>ait</mentioned>, qui in fide fixus et stabilis permanens, quidquid universaliter antiquitus Ecclesiam Catholicam tenuisse cognoverit, id solum
+sibi tenendum credendumque decernit.</quote></a:example></div>
+            </p>
+      </dd>
+    </dl>
+    <p>
+L'étiquetage de la langue des citations (latin médiéval ou ancien français)
+se fera d'abord par des procédés automatiques.
+        </p>
+  </a:documentation>
+  <define name="note">
+    <element name="note">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Dans une citation, mots qui rompent le cours de la phrase 
+(glose, correction d'un auteur ultérieur...).
+Beaucoup de notes ont été repérées automatiquement car paraissant 
+entre parenthèses, avec au moins
+un segment de caractères droits.
+Attention, certaines citations comportent des parenthèses, dont le texte est entièrement en italique, ce ne sont pas des gloses du lexicographe.
+Attention, certaines gloses avec caractères droits comportent aussi des mots en italique,
+comme un titre, ou un mot en mention.
+      </a:documentation>
+      <optional>
+        <ref name="attribution"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="breaks"/>
+          <ref name="q"/>
+          <ref name="author"/>
+          <ref name="abbr"/>
+          <ref name="title"/>
+          <ref name="bibl"/>
+          <ref name="foreign"/>
+          <ref name="num"/>
+          <ref name="i"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="corr">
+    <element name="corr">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Dans certaines citations, un lexicographe postérieur propose parfois des corrections pour
+des erreurs apprentes du texte transcrit, la responsabilité de ces corrections est conservée.
+      </a:documentation>
+      <ref name="attribution"/>
+      <text/>
+    </element>
+  </define>
+  <define name="inline">
+    <a:documentation xmlns="http://www.w3.org/1999/xhtml">Ce groupe contient les segments de textes sémantiquement qualifiés, il ne doit surtout pas comporter d'italique.</a:documentation>
+    <choice>
+      <ref name="ref"/>
+      <ref name="foreign"/>
+      <ref name="gloss"/>
+      <ref name="num"/>
+      <ref name="emph"/>
+      <ref name="oVar"/>
+      <ref name="bibl"/>
+      <ref name="sigle"/>
+      <ref name="title"/>
+      <ref name="author"/>
+      <ref name="abbr"/>
+      <ref name="mentioned"/>
+      <ref name="lb"/>
+      <ref name="breaks"/>
+    </choice>
+  </define>
+  <define name="ref">
+    <element name="ref">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Balisage des renvois, par exemple des formes en italique précédées de "Vide...".</a:documentation>
+      <text/>
+      <choice>
+        <attribute name="cRef">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Lien vers une vedette existante, mais avec plusieurs homographes.</a:documentation>
+        </attribute>
+        <attribute name="target">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Lien vérifié, cible correspondant à une vedette numérisée.</a:documentation>
+        </attribute>
+      </choice>
+      <optional>
+        <ref name="lang">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">La déclaration de langue des renvois est en réserve pour les mots en ancien français liable au glossaire de l'annexe.</a:documentation>
+        </ref>
+      </optional>
+    </element>
+  </define>
+  <define name="foreign">
+    <element name="foreign">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Mot ou passage en langue autre que latine qui n'a pas encore été balisé,
+afin de porter un attribut de langue.
+Le balisage du grec est requis à l'étape du balisage typographique.
+      </a:documentation>
+      <ref name="lang"/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="breaks"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="lang" combine="interleave">
+    <attribute name="xml:lang">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+      Liste de code de langues ayant pu être repérées, à peu près en ordre de fréquence.
+      Pourra s'étendre.
+      Le latin aurait besoin d'être spécifié par une locale plus large, <b>lat-EU-med</b> signifie latin médiéval (Europe),
+      <b>lat-FR-mod</b> qualifie les gloses latines des lexicographes modernes. 
+      Cependant il reste à vérifier si ces valeurs sont XML valides.
+      Les formes et les citations françaises sont généralement en ancien français (médiéval) <b>fro</b>.
+      Utiliser xxx pour une langue non reconnaissable.
+    </a:documentation>
+      <choice>
+        <!--
+        <value h:title="Latin médiéval européen (citations)">la_EU_med</value>
+        <value h:title="Latin moderne français (gloses)">la_FR_mod</value>
+        -->
+        <value h:title="Latin médiéval européen (citations)">lat</value>
+        <value h:title="grec ancien (jusqu'à 1453)">grc</value>
+        <!-- rng:value h:title="français">fra</value -->
+        <!-- rng:value h:title="moyen français (1400-1600) — Middle French">frm</value -->
+        <value h:title="français ancien (842-ca.1400) - French, Old">fro</value>
+        <!-- rng:value h:title="occitan (après 1500)">oci</value -->
+        <value h:title="occitan ancien (jusqu'à 1500) - Provençal">pro</value>
+        <value h:title="breton">bre</value>
+        <value h:title="allemand, moyen haut (ca. 1050-1500) ; Glossarium : german. Teuton">gmh</value>
+        <value h:title="néerlandais, moyen (ca. 1050-1350) ; Glossarium : Belgis">dum</value>
+        <!-- anglais, moyen (1100-1500) ? enm -->
+        <value h:title="anglo-saxon (ca. 450-1100) ; Glossarium : saxon">ang</value>
+        <value h:title="italien">ita</value>
+        <value h:title="espagnol, castillan">spa</value>
+        <value h:title="polonais">pol</value>
+        <value h:title="hébreu">heb</value>
+        <value h:title="langue indéterminée">xxx</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="gloss">
+    <element name="gloss">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Pour les extraits cités de glossaire, paraissant en italique.</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="foreign"/>
+          <ref name="note"/>
+          <ref name="add"/>
+          <ref name="oVar"/>
+          <ref name="breaks"/>
+          <ref name="mentioned"/>
+          <ref name="num"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="emph">
+    <a:documentation xmlns="http://www.w3.org/1999/xhtml">Segment mis en valeur, notamment en droit dans l'italique d'une citation.</a:documentation>
+    <element name="emph">
+      <text/>
+    </element>
+  </define>
+  <define name="title">
+    <element name="title">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Titre d'ouvrage</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="abbr"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="oVar">
+    <element name="oVar">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Rappel de la vedette, parfois fléchie, souvent dans les citations, remarqué typographiquement (italique dans droit ou droit dans italique).</a:documentation>
+      <text/>
+      <optional>
+        <ref name="lang">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">La déclaration de langue du rappel de la vedette est en réserve pour l'ancien français.</a:documentation>
+        </ref>
+      </optional>
+    </element>
+  </define>
+  <define name="num">
+    <element name="num">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Nombres, arabes ou latins, souvent pointés (doivent contenir le point).</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="sup"/>
+          <ref name="sub"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="q">
+    <element name="q">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">A été utilisé dans certaines notes attribuées (dans des citations) qui précisaient
+      des corrections.</a:documentation>
+      <text/>
+    </element>
+  </define>
+  <define name="mentioned">
+    <element name="mentioned">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique dans le droit.
+      </a:documentation>
+      <optional>
+        <attribute name="rend">
+          <choice>
+            <value>sc</value>
+            <value>i</value>
+          </choice>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <!-- BASE LEXICALE -->
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <h2 id="bloc-linguistique">Enrichissements pour exploitation linguistique.</h2>
+    <p>
+    Les déclarations sont des enrichissements nécessaires à l'exploitation linguistique du dictionnaire.
+    </p>
+  </a:documentation>
+  <define name="cit">
+    <element name="cit">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Les références bibliographiques encadrées
+pourront être rattachées au texte cité et enchassées dans un élément cit.
+Cet élément TEI n'acceptant pas le contenu mêlé,
+les connecteurs comme “:” ou “in” seront encadrés par l’élément <tt>&lt;lbl&gt;</tt>.
+      </a:documentation>
+      <oneOrMore>
+        <choice>
+          <ref name="bibl"/>
+          <ref name="quote"/>
+          <ref name="breaks"/>
+          <element name="lbl">
+            <text/>
+          </element>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="bibl">
+    <element name="bibl">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Référence bibliographique, texte mêlé, avec quelques distinctions typographiques 
+ou fonctionnelles.
+L'encadrement des références est un chantier projeté mais pas planifié.
+Le processus d'un balisage automatique n'est pas assuré.
+Le souhait à terme serait que toute attestation soit référencée par une date de temps et de lieu, 
+un type de texte, et un auteur quand c'est pertinent.
+      </a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="abbr"/>
+          <ref name="foreign"/>
+          <ref name="num"/>
+          <ref name="sigle"/>
+          <ref name="title"/>
+          <ref name="author"/>
+          <ref name="breaks"/>
+          <ref name="add"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="sigle">
+    <element name="name">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Sigle d'une référence (auteur ou titre), en italique dans l'édition orfininale.</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="abbr"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="author">
+    <element name="persName">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Auteur d'une référence</a:documentation>
+      <attribute name="type">
+        <value>author</value>
+      </attribute>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="abbr"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="abbr">
+    <element name="abbr">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">Balise les abréviations, par exemple dans une référence bibliographique.
+Sert notamment à contenir les lettres en exposant, ou les points qui ne sont pas des frontières de phrases.
+Certaines abbréviations peuvent être en petites capitales.
+</a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="sup"/>
+        </choice>
+      </zeroOrMore>
+      <optional>
+        <attribute name="rend">
+          <a:documentation/>
+          <choice>
+            <value h:title="&quot;SmallCaps&quot; petites capitales">sc</value>
+          </choice>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="figure">
+    <element name="figure">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">L'élément figure permet de signaler une illustration ou une disposition typographique demandant la consultation de l'image.</a:documentation>
+      <empty/>
+    </element>
+  </define>
+  <define name="lg">
+    <element name="lg">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml"><b>Groupe de vers</b> - Certaines citations longues
+      peuvent proposer plusieurs stances</a:documentation>
+      <oneOrMore>
+        <choice>
+          <ref name="l"/>
+          <ref name="breaks"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <!--
+  <define name="xr">
+    <element name="xr">
+      <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+Typage des renvois et des mots étrangers selon des introducteurs, comme "a" ou "ex"
+afin d'alimenter une base lexicale.
+      </a:documentation>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="ref"/>
+          <ref name="foreign"/>
+        </choice>
+      </zeroOrMore>
+      <optional>
+        <attribute name="type">
+          <a:documentation xmlns="http://www.w3.org/1999/xhtml">Type de relation à la vedette pour un renvoi ou un mot étranger selon une liste normalisée en TEI.</a:documentation>
+          <choice>
+            <value h:title="synonymie (non planifié)">syn</value>
+            <value h:title="étymologie (non planifié)">etym</value>
+            <value h:title="corrélat (non planifié)">cf</value>
+          </choice>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  http://www.w3.org/XML/1998/namespace
+  -->
+  <define name="tei">
+    <zeroOrMore>
+      <choice>
+        <element>
+          <nsName ns="http://www.tei-c.org/ns/1.0"/>
+          <ref name="tei"/>
+        </element>
+        <attribute name="xml:id"/>
+        <attribute>
+          <nsName ns=""/>
+        </attribute>
+        <text/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <start>
+    <element name="TEI">
+      <element name="teiHeader">
+        <ref name="tei"/>
+      </element>
+      <element name="text">
+        <element name="body">
+          <oneOrMore>
+            <choice>
+              <ref name="entry"/>
+              <ref name="breaks"/>
+            </choice>
+          </oneOrMore>
+        </element>
+      </element>
+    </element>
+  </start>
+  <a:documentation xmlns="http://www.w3.org/1999/xhtml">
+    <ul>
+      <li>[FG] 2010-01 — Documentation publique</li>
+      <li>[FG] 2009-10 — Conformité TEI P5 stricte</li>
+      <li>[FG] 2009-04 — Présentation de la démarche au TEI Council (ENS Lyon)</li>
+      <li>[FG] 2008-06 — Révisions pour deuxième tranche</li>
+      <li>[FG] 2007-10 — Modélisation initiale pour cahier des charges première tranche</li>
+    </ul>
+  </a:documentation>
+</grammar>

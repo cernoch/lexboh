@@ -1,0 +1,254 @@
+/* encoding="UTF-8" */
+/*
+
+Présentation du Du Cange http://ducange.enc.sorbonne.fr/cnrtl/
+pour le portail du cnrtl http://www.cnrtl.fr/definition/ducange/
+
+
+ */
+/* pour la vue de démonstration, une classe sur le body évite toute collision avec d'autres CSS */
+body.ducange_cnrtl {
+  color:#000000;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  width:800px;
+  background:#EFEFEF;
+  border:#C3D2F0 1px solid;
+  margin:2em auto;
+  padding:0;
+}
+body.ducange_cnrtl .cadre {
+  background:#FFFFFF;
+  padding:5px 8px;
+}
+/* équivalent de la règle #contentbox, portailv24.css (ligne 279) */
+a {
+  color:#3B85CA;  
+}
+cite {
+  font-style:normal;
+}
+
+/* classes génériques */
+.i {
+  font-style:italic;
+}
+#ducange .title {
+  padding:0;
+  background:none;
+}
+/* Caché/montré des citations en ancien français */
+.fro .dictScrap {
+  display:none;
+}
+.fro .p_fro {
+  display:block;
+}
+
+/* Entrée du glossaire français */
+div.glossaire {
+  margin:0.2ex 0;
+}
+div.glossaire .dictScrap {
+  display:block;
+  margin:0;
+}
+/* cnrtl .messagecenter  */
+h1.messagecenter {
+  color:#D2222D;
+  font-size:14px;
+  font-weight:bold;
+  text-align:center;
+  margin-bottom:3em;
+}
+
+/* l'adresse principale */
+#ducange a.b {
+  background-image:url("http://www.cnrtl.fr/images/css/PointR.jpg");
+  background-position: 3px center;
+  background-repeat:no-repeat;
+  color:#d2222d;
+  padding-left:16px;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:14px;
+}
+/* complément de vedette principale */
+#ducange a.b .seg {
+  font-weight:normal;
+  font-variant:small-caps;
+}
+/* vedette de second niveau */
+#ducange a.sc {
+  font-variant:small-caps;
+  text-decoration:none;
+  color:#d2222d;
+  font-size:15px;
+}
+/* complément de vedette de second niveau */
+.sc .seg {
+  font-style:italic;
+  font-variant:normal;
+}
+
+/* Un message entre les articles du glossaire français et du glossaire latin */
+.glossarium {
+  margin:3em 0 1em 0;
+  color:#3B85CA;
+}
+/* boutons, notamment le caché/montré du latin */
+.but {
+  background-color:#EFEFEF;
+  -moz-border-radius:1ex;
+  -webkit-border-radius:1ex;
+  border-radius:1ex;
+  color:#888 !important;
+  padding:0 0.5ex;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  border:#C3D2F0 1px solid;
+}
+
+/* article du Glossarium */
+div.entry {
+  margin-bottom:3em;
+  border-top:solid 1px #CCCCCC;
+  border-bottom:solid 1px #DDDDDD;
+  color:#666;
+  font-size:13px;
+}
+div.dictScrap {
+  margin:1em 0 1em 0;
+}
+/* citations */
+blockquote {
+  color:#000000;
+  display:block;
+  text-indent:0;
+  padding-top:0.5ex;
+  padding-bottom:0.5ex;
+  padding-left:1ex;
+  padding-right:2em;
+  margin:1px 0 1px 7px;
+  border-left:1px dotted #d2222d;
+  line-height:150%;
+  font-style:normal;
+  background:#FFFFFF;
+  line-height:150%;
+  text-align:justify;
+  font-size:14px;
+  /*
+  background:#FFF0F0;
+  border-top:solid 1px #FFCCCC;
+  border-bottom:solid 1px #FFCCCC;
+  padding-left:1.5ex;
+  */
+}
+blockquote p {
+  margin:0;
+  text-indent:1em;
+}
+blockquote .note {
+  font-style:italic;
+}
+
+.entry_bibl,
+.rights,
+.dictScrap_bibl {
+  font-size:11px;
+  font-family:Arial, sans-serif;
+  line-height:110%;
+  color:#808080;
+}
+.entry_bibl a,
+.rights a,
+.dictScrap_bibl a {
+  text-decoration:none;
+}
+.entry_bibl a:hover,
+.rights a:hover,
+.dictScrap_bibl a:hover {
+  text-decoration:underline;
+}
+
+/* copyright */
+div.rights {
+  text-align:center;
+  padding:0 5px 0 5px;
+}
+
+div.rights span.rights {
+  background-color:#FFF;
+}
+#ducange a.prev {
+  padding: 1px 5px 1px 20px;
+  background-image:url("prev.png");
+  background-position: left center;
+  background-repeat:no-repeat;
+  float:left;
+  background-color:#FFF;
+  color:#D2222D;
+}
+#ducange a.next {
+  padding:1px 20px 1px 5px;
+  background-position: right center;
+  background-repeat:no-repeat;
+  background-image:url(next.png);
+  float:right;
+  background-color:#FFF;
+  color:#D2222D;
+}
+/* ligne bibliographique en tête d'article */
+.entry_bibl {
+  background:#EFEFEF;
+  padding: 2px 2px 2px 5px;
+}
+#ducange .entry_bibl a {
+  color:#808080;
+}
+
+.entry_bibl i {
+  color:#808080;
+}
+.entry_bibl b {
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+/* indication biliographique en cours d'article, aligné à droite */
+.dictScrap_bibl {
+  display:none;
+}
+
+
+/* puces */
+tt.square {
+  font-family:Verdana, "Trebuchet MS", sans-serif;
+  font-weight:900;
+  color:#d2222d;
+  padding:0 0.2ex 0 0.2ex;
+  line-height:90%;
+  margin-top:0.2ex;
+  font-size:14px;
+}
+/* renvoi en italique */
+a.ref {
+  font-style:italic;
+}
+/* les sous adresses */
+.form a {
+  font-variant:small-caps;
+  color:#A73136;
+}
+
+
+/* liens à l'image */
+a.cb {
+  display:none;
+}
+
+.author {
+  font-variant:small-caps;
+}
+

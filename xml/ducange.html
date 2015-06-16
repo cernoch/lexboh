@@ -1,0 +1,1575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--rng_html.xsl — 2012-04-19+02:00-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+/* encoding="UTF-8"
+
+&lt;h1&gt;Xrem, croiser les remarques (documenteur)&lt;/h1&gt;
+
+
+[FG] Frédéric Glorieux &lt;frederic.glorieux@algone.net&gt;
+
+10 ans de CSS pour présenter des sources XML.
+*/
+
+/* HTML5 */
+
+section,
+nav,
+article,
+aside,
+hgroup,
+header,
+footer,
+figure,
+figcaption {
+  display:block;
+}
+
+/* Différentes dispositions */
+
+
+body.rng {
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size:13px;
+}
+body.rng h1 {
+  text-align:center;
+}
+body.rng h3 {
+  /*
+  background-ccolor:#DADADA;
+  background-image: -webkit-gradient(linear, left top, right top,from(#DADADA),to(#FFFFFF));
+  background-image: -webkit-linear-gradient(left, #DADADA, #FFFFFF);
+  background-image:    -moz-linear-gradient(left, #DADADA, #FFFFFF);
+  background-image:     -ms-linear-gradient(left, #DADADA, #FFFFFF);
+  background-image:      -o-linear-gradient(left, #DADADA, #FFFFFF);
+  background-image:         linear-gradient(left, #DADADA, #FFFFFF);
+  */
+  border-bottom:1px solid #336699;
+  padding-left: 1em;
+  margin-top:2em;
+  margin-bottom:1em;
+}
+.tree ul {
+  padding:0;
+  margin:0;
+  padding-left:1em;
+}
+body.rng a {
+  color:#369;
+  text-decoration:none;
+}
+
+body.rng a:hover {
+  text-decoration:underline;
+}
+
+
+body.rng ul.tree ul {
+  padding-left:1ex;
+  margin-left:1em;
+}
+body.rng p {
+  text-align:justify;
+}
+
+body.rng #nav {
+  top:0;
+  position:fixed;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding:0 3px 2em 11px;
+  height:100%;
+  overflow:auto;
+  width:27%;
+  color:black;
+  margin:0 0 0 0;
+  font-family:Arial, sans-serif;
+  font-size:13px;
+  border-right:solid 1px #b3b3b3;
+}
+body.rng #nav header {
+  padding:1ex 0;
+  font-style:normal;
+  font-weight:bold;
+}
+/* corps du document */
+body.rng #article {
+  padding:0;
+  margin:3ex 5em 5em 30%;
+  min-height:500px;
+}
+.transform a {
+  border:none;
+}
+.match p,
+.result p {
+  text-indent:1em;
+  line-height:110%;
+  margin:0 0 0.5ex 0;
+}
+
+/*
+ &lt;h2&gt;XML par &lt;a href="./xml_html.xsl"&gt;xml_html.xsl&lt;/a&gt;&lt;/h2&gt;
+*/
+.example {
+  background-color: #FFFFFF;
+  background-image: -webkit-gradient(linear, left top, right top,from(#FFFFFF),to(#DADADA));
+  background-image: -webkit-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:    -moz-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:     -ms-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:      -o-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:         linear-gradient(left, #FFFFFF, #DADADA);
+  border-left:1px dotted #808080;
+  padding:1ex 1em;
+  margin:0;
+}
+.xml {
+  font-size:14px;
+  line-height:105%;
+  text-align:left;
+}
+
+
+  /* element names */
+.xml .tag a,
+.xml .tag a:visited,
+.xml .open a,
+.xml .open a:visited,
+.xml .close a,
+.xml .close a:visited {
+  text-decoration:none;
+  border-bottom:none;
+  border:none;
+  padding:0;
+}
+.xml a.val {
+  color:#0000FF;
+}
+.xml a.val:hover {
+  text-decoration:underline;
+  border:none;
+}
+
+  /* classes are provided for namespace prefix */
+a.xsl,
+a:visited.xsl {
+  font-family: Arial, sans-serif;
+  color:#669966;
+  font-weight:100;
+  text-decoration:none;
+  border:none;
+}
+a:hover.xsl,
+a:hover.rdf {
+  background:#0000FF;
+  color:white;
+}
+
+a.html,
+a:visited.html,
+a.dc,
+a:visited.dc {
+  color:#FF0000;
+  font-weight:bold;
+  text-decoration:none;
+  border:none;
+}
+a:hover.html,
+a:hover.dc,
+a:hover.template,
+a:focus.template  {
+  background:red;
+  color:white;
+}
+
+a.template,
+a:visited.template {
+  font-family: Verdana, arial, sans-serif;
+  font-weight:bold;
+}
+  /* element names */
+.xml .el,
+.xml  a.el {
+  font-weight:bold;
+  font-family: "Lucida Console", Courier, "MS Courier New", monospace;
+  text-decoration:none;
+  color:#961716;
+  border:none;
+}
+.xml a:hover.el,
+.xml a:hover.att {
+  background:#8080FF;
+  color:#FFFFFF;
+}
+
+  /* attribute names */
+.xml .att {
+  font-family:Arial, sans-serif;
+  font-weight:100;
+}
+.xml a .att {
+  font-family:Arial, sans-serif;
+  color:#444;
+}
+/* tag is what is between brackets */
+.xml .open,
+.xml .close,
+.xml .tag {
+  margin:0;
+  font-family:monospace, sans-serif;
+  /* font-size:80%; */
+  color:#669966;
+}
+.xml .fold {
+  color:#666666;
+}
+
+/* processing instructions */
+.xml .pi {
+  color:#008000;
+  font-weight: bold;
+}
+
+/* textual contents */
+.xml .val,
+.xml .cdata {
+  font-weight:normal;
+  color:#000;
+  margin:0;
+  padding:0;
+}
+
+  /* xml comment */
+
+.xml .comment,
+.xml .comment code {
+  font-size:12px;
+  line-height:125%;
+  background:#FFE;
+  color:#666;
+  /*
+  border:solid #CCCCCC 1px;
+  padding:1px 1em;
+  margin:0;
+  color:#000000;
+  font-weight: 100;
+  width:auto;
+  margin-right:3em;
+  */
+}
+
+.xml  pre.comment {
+  margin:0;
+  padding:0;
+}
+
+  /* button for +/- and margins */
+
+/*
+  a.click {
+  border:1px dotted #808080;
+  color:#000000;
+  font-weight:900;
+  text-decoration:none;
+  border:none;
+  }
+*/
+
+dd.code {
+  /* line-height:105%; */
+  margin:0 !important;
+  padding:0 !important;
+  padding-left:1em !important;
+  border-left: 1px dotted #808080;
+}
+
+.pre .text {
+  background:#EEF;
+  font-family:serif;
+  color:#000;
+}
+
+.xml span.text {
+  color:#000;
+}
+
+.xml .cdata {
+  color:red
+}
+
+.xml .ns {
+  color:#000080;
+  font-weight:100;
+}
+
+/* properties  */
+
+dt {
+  font-weight:bold;
+}
+dl.xml {
+  margin:0;
+  padding:0;
+}
+dl.xml dt {
+  font-weight:normal;
+}
+details.source {
+  margin-left:1em;
+  float:right;
+  max-width:60%;
+  background:#FFFFFF;
+}
+details.source summary {
+  float:right;
+  display:inline;
+  text-align:right;
+}
+details &gt; * {
+  display:none;
+}
+details.minus &gt; * {
+  display:block;
+}
+
+fieldset {
+  margin:1em 0 1ex 0;
+  padding:0 1ex 0 1ex;
+  border:1px dotted #363;
+  -moz-border-radius:1ex;
+  -webkit-border-radius:1ex;
+  white-space:normal;
+}
+.xsl-var {
+  margin-top:1ex;
+}
+.output {
+  color:#961716;
+  font-family: "Lucida Console", Courier, "MS Courier New", monospace;
+  font-size:13px;
+  line-height:110%;
+  text-indent:0;
+  text-align:left;
+}
+.template {
+  margin: 1em 0 0 0;
+  clear:both;
+}
+.template header {
+  border:none;
+  padding:0;
+  border-bottom:#888 1px solid;
+}
+/*
+.template ul,
+.template p {
+  margin-top:0;
+  margin-bottom:0;
+}
+*/
+
+/*
+ &lt;h2&gt;Relax-NG par &lt;a href="./rng_html.xsl"&gt;rng_html.xsl&lt;/a&gt;&lt;/h2&gt;
+*/
+
+section.element,
+section.define {
+  margin-top:2em;
+}
+section.attribute {
+  margin-top:1em;
+}
+
+
+
+.documentation {
+  margin: 1ex 0 1em 0;
+}
+a.define,
+a.ref,
+a:link.define,
+a:link.ref,
+header.define {
+  color:#363;
+  font-style:italic;
+}
+span.less span.refin .toggle {
+  display:none;
+}
+span.more .toggle {
+  background-image:url('http://subversion.cru.fr/diple/trunk/modules/xrem/more.png');
+}
+span.less .toggle {
+  background-image:url('http://subversion.cru.fr/diple/trunk/modules/xrem/less.png');
+}
+a.toggle {
+  background-position:1px center;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  padding-left:7px;
+  padding-right:7px;
+  border:1px solid transparent;
+  padding-top:1px;
+  padding-bottom:1px;
+  margin-left:2px;
+}
+a.toggle:hover {
+  border:1px inset #DDDDDD;
+  text-decoration:none;
+  border:none;
+}
+/* cacher/montrer l'expansion d'une classe */
+span.more span.refin {
+  display:none;
+}
+span.less span.refin {
+  display:block;
+}
+
+/* indentation de la notation compacte des entités */
+span.less span.refin {
+  display:block;
+  margin-left:0.5ex;
+  border-left:1px dotted #888;
+  padding-left:3ex;
+  /* text-indent:-3ex; */
+}
+
+/* indentation des groupes d'usage */
+ul.values {
+  color:#000;
+  margin-top:0;
+  margin-bottom:0;
+  padding-top:0;
+  margin-bottom:0;
+}
+section.rng {
+  margin:2em 0 0 0;
+}
+header.rng {
+  font-weight:bold;
+  font-size:110%;
+  margin-bottom:1ex;
+  padding:0;
+  border:none;
+}
+header.rng a {
+  color:#77A;
+}
+section.rng section.rng header {
+  padding-left:2em;
+}
+section.rng section.rng section.rng header {
+  padding-left:4em;
+}
+section.rng section.rng section.rng section.rng header {
+  padding-left:6em;
+}
+/*
+ * Tableau technique Relax-NG
+ */
+table.grammar {
+  background-color:#FFFFFF;
+  background-image: -webkit-gradient(linear, left top, right top,from(#FFFFFF),to(#DADADA));
+  background-image: -webkit-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:    -moz-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:     -ms-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:      -o-linear-gradient(left, #FFFFFF, #DADADA);
+  background-image:         linear-gradient(left, #FFFFFF, #DADADA);
+  border-collapse:collapse;
+  width:100%;
+  line-height:105%;
+  border-left:1px dotted #808080;
+}
+/* ?? */
+table.grammar tt {
+  color:#000;
+}
+header.attribute {
+  color:#666;
+}
+
+table.grammar td {
+  color:red;
+  padding:0 1ex;
+  line-height:1.1em;
+}
+
+table.grammar th {
+  font-family:Helvetica, Arial, "DejaVu Sans Light ", sans-serif;
+  font-size:12px;
+  width:10ex;
+  vertical-align:top;
+  padding:0 1ex;
+  background:#DADADA;
+  border-bottom:1px solid #FFFFFF;
+  font-weight:normal;
+}
+.grammar a {
+  font-family:Helvetica, Arial, "DejaVu Sans Light ", sans-serif;
+  color:#315BA7;
+  border:none;
+}
+
+em.value {
+  color:#000;
+}
+
+/*
+ &lt;h2&gt;PHP&lt;/h2&gt;
+*/
+
+pre.php {
+  white-space: pre-wrap;
+  font-size:14px;
+  color:red;
+}
+.pre {
+  white-space: pre-wrap;
+}
+code.function {
+  color:#A82C37;
+}
+span.function {
+  font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif;
+  color:#000;
+}
+a.function {
+  font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif;
+}
+a.function:hover {
+  text-decoration:underline;
+}
+
+pre.php b.construct {
+  font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif;
+  color:#000;
+}
+
+pre.php var {
+  font-family:Frutiger,"Deja Vu Sans",Helvetica,sans-serif;
+  color:#000000;
+  font-style:normal;
+}
+
+code.string {
+  color:#060;
+}
+/* comments */
+.comment {
+  font-family:sans-serif;
+  color:#000;
+}
+/* line comments, choice si make them readable the pore as possible */
+span.comment {
+  color:#888;
+  font-style:normal;
+}
+/* sample code in a comment */
+fieldset.comment pre {
+  color:#008;
+}
+div.comment {
+  white-space: normal;
+}
+
+code.integer {
+  color:#FF0000;
+  font-weight:bold;
+}
+code.php-tag {
+  color:#FF0000;
+}
+code.numeric {
+  color:#FF0000;
+  font-weight:bold;
+}
+code.constant {
+  color:#000000;
+}
+tt.op {
+  background:none repeat scroll 0 0 #EEEEEE;
+  color:#000000;
+}
+code.defined {
+  color:red;
+}
+code.whitespace {
+  white-space:pre;
+}
+code.curly {
+  background:none repeat scroll 0 0 #FFAAAA;
+}
+code.parenthese {
+  background:none repeat scroll 0 0 #AAFFAA;
+}
+code.square {
+  background:none repeat scroll 0 0 #AAAAFF;
+}
+code.error-control {
+  background:none repeat scroll 0 0 #FF0000;
+  font-weight:bold;
+}
+</style>
+    <script type="text/javascript" src="http://subversion.cru.fr/diple/trunk/js/Tree.js">//</script>
+  </head>
+  <body class="rng">
+    <nav id="nav"><div id="toc"> </div>
+  <section id="els" class="index"><header>Elements (42)</header><b>E : </b><a href="#el_element_0">element</a>.
+<br/><b>T : </b><a href="#el_TEI">TEI</a>.
+<br/><b>A : </b><a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a>, <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>.
+<br/><b>B : </b><a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a>, <a href="#el_body">body</a>.
+<br/><b>C : </b><a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a>, <a href="#el_cell">cell</a>, <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a>, <a href="#el_corr" title="Dans certaines citations, un lexicographe post&#xE9;rieur propose parfois des corrections pour des erreur">corr</a>.
+<br/><b>D : </b><a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>.
+<br/><b>E : </b><a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>.
+<br/><b>F : </b><a href="#el_figure" title="L'&#xE9;l&#xE9;ment figure permet de signaler une illustration ou une disposition typographique demandant la c">figure</a>, <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a>, <a href="#el_form" title="Le Glossarium distingue typographiquement des mots en t&#xEA;te d'alin&#xE9;a. La pr&#xE9;sentation ne donne aucun ">form</a>.
+<br/><b>G : </b><a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>.
+<br/><b>H : </b><a href="#el_head" title="Titres de tables et de listes.">head</a>, <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>, <a href="#el_hi-sc" title="Petites capitales, g&#xE9;n&#xE9;ralement des mots importants pour l'article, mais de fonction difficile &#xE0; &#xE9;ta">hi<small class="att"> rend="sc"</small></a>, <a href="#el_hi-sup" title="exposant">hi<small class="att"> rend="sup"</small></a>, <a href="#el_hi-sub" title="indice">hi<small class="att"> rend="sub"</small></a>.
+<br/><b>I : </b><a href="#el_item">item</a>.
+<br/><b>L : </b><a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>, <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a>, <a href="#el_lg" title="Groupe de vers">lg</a>, <a href="#el_list" title="Certains articles comportent de longues listes.">list</a>.
+<br/><b>M : </b><a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a>.
+<br/><b>N : </b><a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a>, <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>, <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a>.
+<br/><b>O : </b><a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a>.
+<br/><b>P : </b><a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>, <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a>, <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a>.
+<br/><b>Q : </b><a href="#el_q" title="A &#xE9;t&#xE9; utilis&#xE9; dans certaines notes attribu&#xE9;es (dans des citations) qui pr&#xE9;cisaient des corrections.">q</a>, <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>.
+<br/><b>R : </b><a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a>, <a href="#el_row">row</a>.
+<br/><b>T : </b><a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>, <a href="#el_teiHeader">teiHeader</a>, <a href="#el_text">text</a>, <a href="#el_title" title="Titre d'ouvrage">title</a></section><section id="atts" class="index"><header>Attributes (24)</header><b>A : </b><a href="#def_tei" title=" (2)">attribute</a>.
+<br/><b>C : </b><a href="#att_cRef" title="&lt;ref&gt;">cRef</a>, <a href="#el_cell" title="&lt;cell&gt;">cols</a>.
+<br/><b>E : </b><a href="#att_expand" title="&lt;form&gt;">expand</a>.
+<br/><b>N : </b><a href="#att_n_1" title="&lt;cb&gt;">n</a>, <a href="#att_n_2" title="&lt;pb&gt;">n</a>, <a href="#att_norm" title="&lt;form&gt;">norm</a>.
+<br/><b>R : </b><a href="#el_hi-i" title="&lt;hi&#xA0;rend=&quot;i&quot;&gt;">rend="i"</a>, <a href="#el_hi-sc" title="&lt;hi&#xA0;rend=&quot;sc&quot;&gt;">rend="sc"</a>, <a href="#el_hi-sup" title="&lt;hi&#xA0;rend=&quot;sup&quot;&gt;">rend="sup"</a>, <a href="#el_hi-sub" title="&lt;hi&#xA0;rend=&quot;sub&quot;&gt;">rend="sub"</a>, <a href="#att_rend_5" title=" (6)">rend</a>, <a href="#el_cell" title="&lt;cell&gt;">rend</a>, <a href="#att_rend_7" title="&lt;form&gt;">rend</a>, <a href="#att_rend_8" title=" (5)">rend</a>, <a href="#att_rend_9" title="&lt;mentioned&gt;">rend</a>, <a href="#att_rend_10" title="&lt;abbr&gt;">rend</a>, <a href="#att_rendition" title="&lt;dictScrap&gt;">rendition</a>.
+<br/><b>T : </b><a href="#att_target" title="&lt;ref&gt;">target</a>, <a href="#att_type_1" title="&lt;form&gt;">type</a>, <a href="#el_persName-author" title="&lt;persName&#xA0;type=&quot;author&quot;&gt;">type="author"</a>.
+<br/><b>X : </b><a href="#att_xml-id_1" title=" (2)">xml:id</a>, <a href="#def_tei" title=" (2)">xml:id</a>, <a href="#att_xml-lang" title=" (5)">xml:lang</a></section><section id="macros" class="index"><header>Macros (4)</header><b>B : </b><a class="define" href="#def_breaks" title="Sauts de page et de colonne ins&#xE9;rables &#xE0; presque tout endroit du document">breaks</a>.
+<br/><b>E : </b><a class="define" href="#def_emph" title="Segment mis en valeur, notamment en droit dans l'italique d'une citation.">emph</a>.
+<br/><b>I : </b><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a>.
+<br/><b>T : </b><a class="define" href="#def_tei">tei</a></section></nav>
+    <article id="article">
+  <div class="documentation">
+    <img src="http://ducange.enc.sorbonne.fr/doc/colonne.jpg" align="right"/>
+    <h1><a href="http://ducange.enc.sorbonne.fr/">Du Cange</a>, Schéma d'encodage</h1>
+    <p>
+Cette page explique la structure d'informatisation du
+<i>Glossarium mediae et infimae latinitatis</i> de Du Cange ; dans l'édition
+de Favre (1883-87). Ce schéma décrit de manière formelle une “grammaire” et un “vocabulaire”
+(conformes au format <a href="http://www.tei-c.org/release/doc/tei-p5-doc/html/">TEI-P5</a>).
+Il fixe les règles d'articulation des balises employées pour structurer le texte du
+<i>Glossarium</i>. Le <a href="http://ducange.enc.sorbonne.fr/src/schema.rng">schéma</a> lui même est livré avec les sources
+du texte.
+  </p>
+    <ul>
+      <li>2007—2011, Frédéric Glorieux (École nationale des chartes) — conception intiale et maintenance</li>
+    </ul>
+    <p>
+Ordre d'exposition selon l'approfondissement du balisage :
+  </p>
+    <ul>
+      <li><a href="#bloc-typo">Typographie</a> — structuration typographique visible</li>
+      <li><a href="#bloc-lexico">Mise en ligne</a> — opérations de normalisation nécessaires avant mise en ligne.</li>
+      <li><a href="#fonctions">Résolution de l'italique et des petites capitales</a> — fonctions possibles de le typographie ambigue.</li>
+      <li><a href="#bloc-linguistique">Corpus linguistique</a> — pour une base lexicale et un corpus annoté sur les citations en latin médiéval.</li>
+    </ul>
+    <p class="remark">NOTE : Cet exemple d’article illustre la variété des faits médiévaux dont peut témoigner le <i>Du Cange</i>.
+      Le latin permettait aux érudits classiques une exactitude parfois plus difficile en français.
+    </p>
+    <a href="http://ducange.enc.sorbonne.fr/PUTAGIUM">PUTAGIUM</a>
+    <figure class="xml example">
+      <dl class="xml "><dt class="open"><a class="fold" tabindex="1">&lt;</a><a class="el" href="#el_entry">entry</a> <b class="xml att">xml:id</b>="<code class="val">PUTAGIUM</code>" <b class="att">rend</b>="<code class="val">ducange</code>"&gt;</dt><dd class="code">
+        <div class="xml_block "><span class="open"><a class="fold" tabindex="1">&lt;</a><a class="el" href="#el_dictScrap">dictScrap</a> <b class="xml att">xml:id</b>="<code class="val">PUTAGIUM-1</code>"&gt;</span><span class="xml_mix"><span class=""><span class="open">&lt;<a class="el" href="#el_form">form</a> <b class="att">rend</b>="<code class="val">b</code>"&gt;</span><span class="text">PUTAGIUM</span><span class="close">&lt;/<a class="el" href="#el_form">form</a>&gt;</span></span><span class="text">, Fornicatio, meretricatus, de fœmina dicitur. Regiam Majestatem lib. 2. cap. 49 :
+            </span><span class=""><span class="open">&lt;<a class="el" href="#el_quote">quote</a>&gt;</span><span class="text">Quod generaliter dici solet, quod Putagium hæreditatem non adimit, intelligitur
+            de Putagio matris, quia filius est hæres legitimus, quem nuptiæ demonstrant.</span><span class="close">&lt;/<a class="el" href="#el_quote">quote</a>&gt;</span></span><span class="text">
+          Vide Bractonum lib. 2. cap. 37. § 6. et Fletam lib. 1. cap. 15. § 4. Gallis </span><span class=""><span class="open">&lt;<a class="el" href="#el_hi">hi</a> <b class="att">rend</b>="<code class="val">i</code>"&gt;</span><span class="text">Putage</span><span class="close">&lt;/<a class="el" href="#el_hi">hi</a>&gt;</span></span><span class="text">.
+          Charta ann. 1247. in Tabular. Campaniæ fol. 343 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_quote">quote</a>&gt;</span><span class="text">La fame, qui dira vilonnie à
+            autre, si come de Putage, payera 5. sols, ou portera la pierre toute nuë en sa chemise à
+            la Procession, et celle-là poindra aprés an la nage d'un aguillon, et s'elle disoit
+            autre villonnie, qui atourt à honte de cors, ele paieroit 3. sols, et li homs
+          ainsin.</span><span class="close">&lt;/<a class="el" href="#el_quote">quote</a>&gt;</span></span><span class="text"> Le Roman </span><span class=""><span class="open">&lt;<a class="el" href="#el_hi">hi</a> <b class="att">rend</b>="<code class="val">i</code>"&gt;</span><span class="text">de Vacces</span><span class="close">&lt;/<a class="el" href="#el_hi">hi</a>&gt;</span></span><span class="text"> MS. : </span><span class=""><span class="open">&lt;<a class="el" href="#el_quote">quote</a>&gt;</span><span class=""><span class="open">&lt;<a class="el" href="#el_l">l</a>&gt;</span><span class="text">Maint home a essillié et torné à servage,</span><span class="close">&lt;/<a class="el" href="#el_l">l</a>&gt;</span></span><span class=""><span class="open">&lt;<a class="el" href="#el_l">l</a>&gt;</span><span class="text">Et mis par poureté mainte feme au Putage.</span><span class="close">&lt;/<a class="el" href="#el_l">l</a>&gt;</span></span><span class="close">&lt;/<a class="el" href="#el_quote">quote</a>&gt;</span></span><span class="text"> [...].</span></span><span class="close">&lt;/<a class="el" href="#el_dictScrap">dictScrap</a>&gt;</span></div>
+        <div class="xml_block "><span class="open"><a class="fold" tabindex="1">&lt;</a><a class="el" href="#el_dictScrap">dictScrap</a> <b class="xml att">xml:id</b>="<code class="val">PUTAGIUM-2</code>" <b class="att">rend</b>="<code class="val">carpentier</code>"&gt;</span><span class="xml_mix"><span class="text">Glossar. Provinc. Lat. ex
+          Cod. reg. 7657 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_gloss">gloss</a>&gt;</span><span class="text">Putaneiar, Prov. fornicari.</span><span class="close">&lt;/<a class="el" href="#el_gloss">gloss</a>&gt;</span></span><span class="text"> Charta </span><span class="open ">&lt;<a class="el" href="#el_cb">cb</a> <b class="att">n</b>="<code class="val">577c</code>"/&gt;</span><span class="text"> Phil.
+          III. ann. 1283. in Reg. 61. Chartoph. reg. ch. 389 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_quote">quote</a>&gt;</span><span class="text">Dimisimus Majori et
+            communitati villæ de Vernolio emendas et cognitiones, quas in dicta villa et ejus
+            livreis habebamus in casibus infrascriptis, videlicet.... de Putagio, de maledictis, de
+            pravis denariatis carnium, piscium, etc.</span><span class="close">&lt;/<a class="el" href="#el_quote">quote</a>&gt;</span></span></span><span class="close">&lt;/<a class="el" href="#el_dictScrap">dictScrap</a>&gt;</span></div>
+        <div class="comment">&lt;!--<code> [...] </code>--&gt;</div>
+      </dd><dt class="close">&lt;/<a class="el" href="#el_entry">entry</a>&gt;</dt></dl>
+    </figure>
+    <br style="clear:both"/>
+    <table class="data">
+      <caption>80 Mo de XML-TEI ; 45 millions de signes ; segment moyen : 40 signes</caption>
+      <tr>
+        <th width="40%">balise</th>
+        <th width="20">effectif</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_quote">quote</a>
+        </td>
+        <td align="right">155 277</td>
+        <td>Citations</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_dictScrap">dictScrap</a>
+        </td>
+        <td align="right">135 829</td>
+        <td>Alinéas</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_form">form</a>
+        </td>
+        <td align="right">126 798</td>
+        <td>Vedettes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_hi-i">hi</a>
+
+        </td>
+        <td align="right">119 730</td>
+        <td>Italique non résolu</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_entry">entry</a>
+        </td>
+        <td align="right">90 388</td>
+        <td>Articles</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_ref">ref</a>
+        </td>
+        <td align="right">54 362</td>
+        <td>Renvois</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_num">num</a>
+        </td>
+        <td align="right">25 257</td>
+        <td>Numéros</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_add">add</a>
+        </td>
+        <td align="right">23 872</td>
+        <td>Additions</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_l">l</a>
+        </td>
+        <td align="right">21 231</td>
+        <td>Ligne de citation en vers</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cb">cb</a>
+        </td>
+        <td align="right">14 952</td>
+        <td>Colonnes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_foreign">foreign</a>
+        </td>
+        <td align="right">14 855</td>
+        <td>Mots étrangers</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_note">note</a>
+        </td>
+        <td align="right">8 722</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_pb">pb</a>
+        </td>
+        <td align="right">5 008</td>
+        <td>Sauts de page</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_seg">seg</a>
+        </td>
+        <td align="right">4 377</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_persName">persName</a>
+        </td>
+        <td align="right">3 121</td>
+        <td>Auteurs</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_oVar">oVar</a>
+        </td>
+        <td align="right">1 838</td>
+        <td>Rappel de la vedette</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cell">cell</a>
+        </td>
+        <td align="right">995</td>
+        <td>Cellule de tableau</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_p">p</a>
+        </td>
+        <td align="right">924</td>
+        <td>Articles complexes</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_mentioned">mentioned</a>
+        </td>
+        <td align="right">692</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_row">row</a>
+        </td>
+        <td align="right">474</td>
+        <td>Ligne de tableau</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_bibl">bibl</a>
+        </td>
+        <td align="right">417</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_lbl">lbl</a>
+        </td>
+        <td align="right">289</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_cit">cit</a>
+        </td>
+        <td align="right">288</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_item">item</a>
+        </td>
+        <td align="right">256</td>
+        <td>Dans une liste</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_title">title</a>
+        </td>
+        <td align="right">159</td>
+        <td/>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_gloss">gloss</a>
+        </td>
+        <td align="right">98</td>
+        <td>Glose, généralement citée d'un glossaire</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_abbr">abbr</a>
+        </td>
+        <td align="right">88</td>
+        <td>Dans certaines citations</td>
+      </tr>
+      <tr>
+        <td align="right">q</td>
+        <td align="right">44</td>
+        <td>Dans certaines notes</td>
+      </tr>
+      <tr>
+        <td align="right">respStmt, resp, name, change, addrLine, funder, idno</td>
+        <td align="right">n x 24</td>
+        <td>Éléments répétés dans l'entête TEI</td>
+      </tr>
+      <tr>
+        <td align="right">TEI, text, body, teiHeader, titleStmt, fileDesc, principal, seriesStmt, extent, author, availability, date, publicationStmt, publisher, address, encodingDesc, sourceDesc, revisionDesc, editorialDecl, samplingDecl, projectDesc</td>
+        <td align="right">24</td>
+        <td>fichiers TEI avec cartouche d'entête</td>
+      </tr>
+      <tr>
+        <td align="right">figure</td>
+        <td align="right">19</td>
+        <td>À réduire en listes ou en tables</td>
+      </tr>
+      <tr>
+        <td align="right">
+          <a href="#el_table">table</a>
+        </td>
+        <td align="right">12</td>
+        <td>Pour articles complexes</td>
+      </tr>
+      
+      <tr>
+        <td align="right">head</td>
+        <td align="right">6</td>
+        <td>Listes et tables titrées</td>
+      </tr>
+      <tr>
+        <td align="right">list</td>
+        <td align="right">6</td>
+        <td>Pour articles complexes</td>
+      </tr>
+    </table>
+    <h2 id="bloc-typo">Balisage typographique</h2>
+    <p>
+    Ces déclarations formelles résument les observables attendus de
+    la prestation de numérisation.
+      </p>
+  </div>
+  <section class="element rng" id="el_entry"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-entry.html" target="TEI">entry</a>&gt;</h1></header><div class="documentation">“Article” du dictionnaire.
+Le corps visible du dictionnaire est séparé en alinéas, dont certains commencent
+avec un mot en majuscules grasses. On appellera “vedette” ces mots en gras.
+On appellera “article” un groupe d'alinéas commençant par une vedette et s'arrêtant
+avant la suivante.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_8" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">@rend</a><a href="#att_xml-id_1" title="Identifiant d'article construit automatiquement sur la vedette et num&#xE9;ro d'homographe, obligatoire a">@xml:id</a></td></tr><tr><th>Contenu</th><td>( <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )+</td></tr><tr><th>Usage</th><td> <a href="#el_body">body</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_dictScrap"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-dictScrap.html" target="TEI">dictScrap</a>&gt;</h1></header><div class="documentation">Alinéa.
+Les articles du “Glossarium” sont très peu systématiques. Ce serait une erreur d'interpréter
+les alinéas comme des “sens” de la vedette (voir TEI &lt;sense&gt;).
+L'élément &lt;dictScrap&gt; est beaucoup plus approprié :
+« encloses a part of a dictionary entry in which other phrase-level dictionary elements are freely combined. ».
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_xml-id_1" title="Identifiant d'article construit automatiquement sur la vedette et num&#xE9;ro d'homographe, obligatoire a">@xml:id</a> <a href="#att_rend_8" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">@rend</a>? <a href="#att_rendition" title="Dans quelques rares articles comportant des listes (ex : Moneta), un paragraphe centr&#xE9; peut servir d">@rendition</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_form" title="Le Glossarium distingue typographiquement des mots en t&#xEA;te d'alin&#xE9;a. La pr&#xE9;sentation ne donne aucun ">form</a> | <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a> | <a href="#el_list" title="Certains articles comportent de longues listes.">list</a> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> | <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> | <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a> | <a href="#el_hi-sc" title="Petites capitales, g&#xE9;n&#xE9;ralement des mots importants pour l'article, mais de fonction difficile &#xE0; &#xE9;ta">hi<small class="att"> rend="sc"</small></a> | <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a> | <a href="#el_figure" title="L'&#xE9;l&#xE9;ment figure permet de signaler une illustration ou une disposition typographique demandant la c">figure</a> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> )*</td></tr><tr><th>Usage</th><td> <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a> </td></tr></table>
+        
+      
+        <section class="attribute rng" id="att_rendition"><header class="attribute rng">@rendition</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+            <li class="value"><em>"center"</em> : Paragraphe centré</li>
+            <li class="value"><em>"left"</em> : Paragraphe à gauche</li>
+            <li class="value"><em>"right"</em> : Paragraphe à droite</li>
+          </ul></td></tr></table>
+          <div class="documentation">Dans quelques rares articles comportant des listes (ex : Moneta), un paragraphe centré peut servir de séparateur, on le signale par la valeur "center" de l'attribut <tt>rend</tt>.</div>
+          
+            
+            
+            
+          
+        </section>
+      
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_add"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-add.html" target="TEI">add</a>&gt;</h1></header><div class="documentation">
+Ajouts éditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des repères pour
+la segmentation des citations en italique.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_8" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">@rend</a></td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> | <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> | <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a> | <a href="#el_hi-sc" title="Petites capitales, g&#xE9;n&#xE9;ralement des mots importants pour l'article, mais de fonction difficile &#xE0; &#xE9;ta">hi<small class="att"> rend="sc"</small></a> | <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> )*</td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_hi-i"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-hi.html" target="TEI">hi<small class="att"> rend="i"</small></a>&gt;</h1></header><div class="documentation">Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit généralement (+4/5) pas contenir de ponctuation. Ne surtout pas employer cet élément pour des citations &lt;quote&gt; ou des renvois &lt;ref&gt;.</div><table class="grammar"><tr><th>Attributs</th><td><a href="#el_hi-i">@rend="i"</a></td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_hi-sup" title="exposant">hi<small class="att"> rend="sup"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )*</td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_cell">cell</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> </td></tr></table>
+        
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_hi-sc"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-hi.html" target="TEI">hi<small class="att"> rend="sc"</small></a>&gt;</h1></header><div class="documentation">Petites capitales, généralement des mots importants pour l'article, mais de fonction difficile à établir. Attention aux citations qui sont des inscriptions. Attention aux chiffres romains en petites capitales, utiliser &lt;num&gt;.</div><table class="grammar"><tr><th>Attributs</th><td><a href="#el_hi-sc">@rend="sc"</a></td></tr><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a> </td></tr></table></section>
+  <section class="element rng" id="el_hi-sup"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-hi.html" target="TEI">hi<small class="att"> rend="sup"</small></a>&gt;</h1></header><div class="documentation">
+        <sup>exposant</sup>
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#el_hi-sup">@rend="sup"</a></td></tr><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a>  <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> </td></tr></table></section>
+  <section class="element rng" id="el_hi-sub"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-hi.html" target="TEI">hi<small class="att"> rend="sub"</small></a>&gt;</h1></header><div class="documentation">
+        <sub>indice</sub>
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#el_hi-sub">@rend="sub"</a></td></tr><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> </td></tr></table></section>
+  <section class="define rng" id="def_breaks"><header class="define rng">breaks</header><div class="documentation">Sauts de page et de colonne insérables à presque tout endroit du document</div><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_breaks" title="Sauts de page et de colonne ins&#xE9;rables &#xE0; presque tout endroit du document">breaks</a><span class="defin"> &gt;  <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>  <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>  <a href="#el_list" title="Certains articles comportent de longues listes.">list</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a>  <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a>  <a href="#el_lg" title="Groupe de vers">lg</a>  <a href="#el_body">body</a>  &lt;</span></span></td></tr></table>
+      <section class="element rng" id="el_cb"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-cb.html" target="TEI">cb</a>&gt;</h1></header><div class="documentation">Conservation des sauts de colonne de l'édition imprimée, notamment pour lien à l'image de la colonne.</div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_n_1" title="Le num&#xE9;ro de colonne est obligatoire, par exemple pour la troisi&#xE8;me colonne de la page 245 : 245c.">@n</a></td></tr><tr><th>Contenu</th><td><i>empty()</i>, </td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_breaks" title="Sauts de page et de colonne ins&#xE9;rables &#xE0; presque tout endroit du document">breaks</a><span class="defin"> &gt;  <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>  <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>  <a href="#el_list" title="Certains articles comportent de longues listes.">list</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a>  <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a>  <a href="#el_lg" title="Groupe de vers">lg</a>  <a href="#el_body">body</a>  &lt;</span></span></td></tr></table><section class="attribute rng" id="att_n_1"><header class="attribute rng">@n</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation">Le numéro de colonne est obligatoire, par exemple pour la troisième colonne de la page 245 : 245c.</div>
+        </section></section>
+      <section class="element rng" id="el_pb"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-pb.html" target="TEI">pb</a>&gt;</h1></header><div class="documentation">Conservation des sauts de page de l'édition imprimée originale.</div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_n_2" title="Le num&#xE9;ro de page est obligatoire.">@n</a></td></tr><tr><th>Contenu</th><td><i>empty()</i></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_breaks" title="Sauts de page et de colonne ins&#xE9;rables &#xE0; presque tout endroit du document">breaks</a><span class="defin"> &gt;  <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>  <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>  <a href="#el_list" title="Certains articles comportent de longues listes.">list</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a>  <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a>  <a href="#el_lg" title="Groupe de vers">lg</a>  <a href="#el_body">body</a>  &lt;</span></span></td></tr></table><section class="attribute rng" id="att_n_2"><header class="attribute rng">@n</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation">Le numéro de page est obligatoire.</div>
+        </section></section>
+    </section>
+  <section class="element rng" id="el_lb"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-lb.html" target="TEI">lb</a>&gt;</h1></header><div class="documentation">Saut de ligne (ne pas en abuser).</div><table class="grammar"><tr><th>Contenu</th><td><i>empty()</i></td></tr><tr><th>Usage</th><td> <a href="#el_cell">cell</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table></section>
+  <section class="attribute rng" id="att_rend_5"><header class="attribute rng">@rend</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+        <li class="value"><em>"sc"</em> : Small Caps, petites capitales</li>
+        <li class="value"><em>"i"</em> : Italique</li>
+        <li class="value"><em>"b"</em> : Bold, gras</li>
+        <li class="value"><em>"center"</em> : Paragraphe centré</li>
+        <li class="value"><em>"center sc"</em> : Paragraphe centré</li>
+      </ul></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_rend" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">rend</a><span class="defin"> &gt;  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_head" title="Titres de tables et de listes.">head</a>  <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>  <a href="#el_list" title="Certains articles comportent de longues listes.">list</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table>
+      <div class="documentation">
+Certains éléments de niveau bloc (citations, tables), ont une mise en forme
+typographique globale qu'il est plus économe de mentionner au niveau du
+conteneur. Ainsi par exemple, des inscriptions paraissent en petites capitales dans la version imprimée,
+mais ce sont des citations, ne pas utiliser <a href="#el-sc">&lt;sc&gt;</a> en ce cas.
+      </div>
+      
+        
+        
+        
+        
+        
+      
+    </section>
+  <section class="element rng" id="el_l"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-l.html" target="TEI">l</a>&gt;</h1></header><div class="documentation">Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,
+    l'alinéa qui précède le vers plus court sera conservé par deux espaces dans l'élément l.</div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>? <a href="#att_xml-lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">@xml:lang</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> )*, </td></tr><tr><th>Usage</th><td> <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  <a href="#el_lg" title="Groupe de vers">lg</a> </td></tr></table>
+        
+          
+          
+          
+        
+      
+        
+      
+        
+      </section>
+  <section class="element rng" id="el_p"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-p.html" target="TEI">p</a>&gt;</h1></header><div class="documentation">
+Certaines citations longues requièrent une division en paragraphes. Ce cas est rare,
+et concernent des articles longs, les dissertations de Du Cange.
+      </div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> | <a href="#el_hi-sc" title="Petites capitales, g&#xE9;n&#xE9;ralement des mots importants pour l'article, mais de fonction difficile &#xE0; &#xE9;ta">hi<small class="att"> rend="sc"</small></a> | <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> | <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> )*, </td></tr><tr><th>Usage</th><td> <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table>
+        
+          
+          
+          
+          
+          
+          
+        
+      
+        
+      </section>
+  <section class="element rng" id="el_head"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-head.html" target="TEI">head</a>&gt;</h1></header><div class="documentation">
+  Titres de tables et de listes.
+      </div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>?</td></tr><tr><th>Contenu</th><td><i> text() </i>, </td></tr><tr><th>Usage</th><td> <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a>  <a href="#el_list" title="Certains articles comportent de longues listes.">list</a> </td></tr></table>
+        
+      </section>
+  <section class="element rng" id="el_table"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-table.html" target="TEI">table</a>&gt;</h1></header><div class="documentation">Certaines parties d'articles sont composées comme des tables.</div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>?</td></tr><tr><th>Contenu</th><td><a href="#el_head" title="Titres de tables et de listes.">head</a>?, ( <a href="#el_row">row</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )+</td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table>
+        
+      
+        
+      
+        
+          <section class="element rng" id="el_row"><header class="element rng"><h2>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-row.html" target="TEI">row</a>&gt;</h2></header><table class="grammar"><tr><th>Contenu</th><td><a href="#el_cell">cell</a>+</td></tr><tr><th>Usage</th><td> <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a> </td></tr></table>
+              <section class="element rng" id="el_cell"><header class="element rng"><h3>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-cell.html" target="TEI">cell</a>&gt;</h3></header><table class="grammar"><tr><th>Attributs</th><td><a href="#el_cell">@cols</a>? <a href="#el_cell">@rend</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> | <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_row">row</a> </td></tr></table>
+                  
+                
+                  
+                
+                  
+                    
+                    
+                    
+                    
+                    
+                  
+                </section>
+            </section>
+          
+        
+      </section>
+  <section class="element rng" id="el_list"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-list.html" target="TEI">list</a>&gt;</h1></header><div class="documentation">Certains articles comportent de longues listes.</div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>?</td></tr><tr><th>Contenu</th><td><a href="#el_head" title="Titres de tables et de listes.">head</a>?, ( <a href="#el_item">item</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )+, </td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table>
+        
+      
+        
+          <section class="element rng" id="el_item"><header class="element rng"><h2>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-item.html" target="TEI">item</a>&gt;</h2></header><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> )*</td></tr><tr><th>Usage</th><td> <a href="#el_list" title="Certains articles comportent de longues listes.">list</a> </td></tr></table>
+              
+                
+                
+              
+            </section>
+          
+        
+      
+        
+      </section>
+  
+  
+  <div class="documentation">
+    <h2 id="bloc-lexico">Enrichissement lexicographique.</h2>
+    <p>
+    Les informations balisées qui suivent ne sont pas requises à l'étape du balisage typographique.
+    Elles définissent le programme d'enrichissement lexicographique nécessaire
+    de la source avant mise en ligne. Les étapes suivantes doivent être appliquées
+</p>
+    <ol>
+      <li>Etablissement des vedettes et sous-vedettes <tt>form</tt> (automatique à vérifier).</li>
+      <li>Attribution des segments <tt>@resp</tt> selon les puces, suppression des puces et des crochets d'addition.</li>
+      <li>Identifiants d'article (automatique).</li>
+      <li>Intégrité relationnelle (vérifier l'identification des cibles des renvois).</li>
+    </ol>
+  </div>
+  <section class="element rng" id="el_form"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-form.html" target="TEI">form</a>&gt;</h1></header><div class="documentation">Le Glossarium distingue typographiquement des mots en tête d'alinéa.
+La présentation ne donne aucun moyen de déduire le statut linguistique de ces mots 
+dans le lexique médiolatin (vedette, variante, forme fléchie, expression...).
+Ce travail est prévu dans le projet ANR Omnia, qui pour aboutir à un lemmatiseur du latin médiéval,
+établit un lexique hiérarchisé de la langue.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_7">@rend</a> <a href="#att_type_1" title="Le typage des vedettes commence fin 2009, &#xE0; partir du lexique Omnia, et des corrections par des lati">@type</a>? <a href="#att_expand" title="Certaines entr&#xE9;es, notamment chez Favre, indiquent une variante, par exemple RETRANGA, -STRENGA. La ">@expand</a>? <a href="#att_norm" title="Favre introduit des variantes indiqu&#xE9;es comme des suffixes du lemme principal en adresse, une valeur">@norm</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_seg_0">seg</a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a> </td></tr></table><section class="attribute rng" id="att_rend_7"><header class="attribute rng">@rend</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+          <li class="value"><em>"b"</em> : Gras, vedette commençant un article</li>
+          <li class="value"><em>"sc"</em> : Petites capitales, sous-vedette</li>
+          <li class="value"><em>"i"</em> : Italique, sous-sous-vedette</li>
+        </ul></td></tr></table>
+        
+          
+          
+          
+        
+      </section>
+        <section class="attribute rng" id="att_type_1"><header class="attribute rng">@type</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+            <li class="value"><em>"lemma"</em> : Lemme selon le lexique Omnia</li>
+            <li class="value"><em>"variant"</em> : Variante graphique selon le lexique Omnia</li>
+            <li class="value"><em>"inflected"</em> : Entrée fléchie, déclinaison ou conjugaison</li>
+            <li class="value"><em>"compound"</em> : Mot composé</li>
+            <li class="value"><em>"phrase"</em> : Expression</li>
+          </ul></td></tr></table>
+          <div class="documentation">Le typage des vedettes commence fin 2009, à partir du lexique Omnia, et des corrections par des latinistes. La tâche pourra durer.</div>
+          
+            
+            
+            
+            
+            
+          
+        </section>
+      
+        <section class="attribute rng" id="att_expand"><header class="attribute rng">@expand</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation"><label>
+            </label><p>Certaines entrées, notamment chez Favre, indiquent une variante, par exemple <b>RETRANGA, -STRENGA</b>. La forme <i>-strenga</i> serait difficilement exploitable automatiquement, l'attribut <code>@expand</code> permet d'indiquer la variante <i>restrenga</i>.</p>
+          </div>
+        </section>
+      
+        <section class="attribute rng" id="att_norm"><header class="attribute rng">@norm</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation">
+Favre introduit des variantes indiquées comme des suffixes du lemme principal en adresse,
+une valeur normalisée facilite les traitements.</div>
+        </section>
+      
+        
+          
+          
+          
+        
+      </section>
+  <div class="documentation"><label>
+    </label><p>
+Les vedettes et sous-vedettes sont désormais vérifiées, afin d'assurer le découpage
+des articles et leur identification.
+    </p>
+    <p>
+En général, les formes en capitales grasses sont des vedettes.
+L'élément form peut contenir un numéro d'homographe, et parfois,
+une forme en petites capitales lorsqu'elle n'est pas séparée par une virgule ou un point.
+    </p>
+    <p>
+Une forme en petites capitales en tête de paragraphe, introduit une sous-vedette, susceptible
+d'être précisées par des segments italique qui ne sont pas séparés d'une ponctuation.
+    </p>
+    <p>
+Un post-traitement appliquera un élément form par dessus les variations typographiques
+repérérées avec l'élément hi, afin de conserver l'apparence de l'original imprimé.
+    </p>
+    <p>
+Le niveau d'une vedette est distingué par l'attribut @rend, conservant la typographie
+imprimée (gras, petites capitales, italique).
+    </p>
+  </div>
+  <section class="attribute rng" id="att_xml-id_1"><header class="attribute rng">@xml:id</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_id" title="Identifiant d'article construit automatiquement sur la vedette et num&#xE9;ro d'homographe, obligatoire a">id</a><span class="defin"> &gt;  <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  &lt;</span></span></td></tr></table>
+      <div class="documentation">
+    Identifiant d'article construit automatiquement sur la vedette et numéro d'homographe, obligatoire après traitement.
+      </div>
+    </section>
+  <section class="attribute rng" id="att_rend_8"><header class="attribute rng">@rend</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+        <li class="value"><em>"ducange"</em> : Du Cange, Charles Du Fresne, 1678</li>
+        <li class="value"><em>"benedictin"</em> : Bénédictins de St. Maur, 1733-1736</li>
+        <li class="value"><em>"benedictin glose"</em> : Bénédictins de St. Maur, 1733-1736, glose</li>
+        <li class="value"><em>"carpentier"</em> : Carpentier, Pierre, 1766</li>
+        <li class="value"><em>"henschel"</em> : Henschel, Louis, 1840-1850.</li>
+        <li class="value"><em>"favre"</em> : Favre, Léopold, 1883-1887</li>
+        <li class="value"><em>"enc"</em> : École nationale des chartes, 2007-</li>
+      </ul></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_attribution" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">attribution</a><span class="defin"> &gt;  <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a>  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <a href="#el_corr" title="Dans certaines citations, un lexicographe post&#xE9;rieur propose parfois des corrections pour des erreur">corr</a>  &lt;</span></span></td></tr></table>
+      <div class="documentation">Attribution d'un ajout selon la légende siglæ, sera appliquée automatiquement sur les puces.</div>
+      
+        
+        
+        
+        
+        
+        
+        
+      
+    </section>
+  <div class="documentation">
+    <h2 id="fonctions">Désambiguïsation de l'italique (et des petites capitales)</h2>
+    <p>
+Cette section énumère et documente les fonctions permettant de qualifier l'italique typographique.
+Elle est conçue pour servir de guide aux éditeurs qui reprennent le balisage du prestataire,
+afin de qualifier plus précisément la typographie.
+    </p>
+  </div>
+  <section class="element rng" id="el_quote"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-quote.html" target="TEI">quote</a>&gt;</h1></header><div class="documentation">Texte cité rattachable à une référence bibliographique. Le but de ce balisage est surtout
+de réunir un corpus varié de langue médiévale (latin ou vernaculaire). Ces citations apparaîtront en bloc 
+décroché à l'écran. On décidera qu'en général, une citation doit comprendre au moins une phrase complète.
+      </div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_5" title="Certains &#xE9;l&#xE9;ments de niveau bloc (citations, tables), ont une mise en forme typographique globale qu">@rend</a>? <a href="#att_xml-lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">@xml:lang</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a> | <a href="#el_lg" title="Groupe de vers">lg</a> | <a href="#el_corr" title="Dans certaines citations, un lexicographe post&#xE9;rieur propose parfois des corrections pour des erreur">corr</a> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> | <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a> | <a href="#el_list" title="Certains articles comportent de longues listes.">list</a> | <a href="#el_table" title="Certaines parties d'articles sont compos&#xE9;es comme des tables.">table</a> | <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> | <a href="#el_figure" title="L'&#xE9;l&#xE9;ment figure permet de signaler une illustration ou une disposition typographique demandant la c">figure</a> | <span class="more"><a class="ref" href="#def_inline">inline</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</span></span> )*, </td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a> </td></tr></table>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      
+        
+      
+        
+      </section>
+  <div class="documentation"><label>
+    </label><p>L'imprimé distingue les types suivants de citations :</p>
+    <ul>
+      <li>Prose : italique en cours de paragraphe</li>
+      <li>Inscription : en petite capitales (cas rare)</li>
+      <li>Vers : bloc décroché de lignes en corps plus petit</li>
+    </ul>
+    <p>
+La reconnaissance des vers pose peu de problèmes. Les inscriptions en petites capitales sont assez
+mal reconnues mais peu nombreuses. Un gros problème concerne
+le découpage des citations en prose. La pose des balises provient initialement de la règle :
+« texte italique suivant ‘:’ ». Il en résulte beaucoup d'erreurs, que l'on essaie
+de lister ici en ordre de fréquence.
+        </p>
+    <dl class="dl">
+      <dt>Citations trop courtes</dt>
+      <dd>
+        <p><b>DAE</b> [...] Papias in cod. 7609 : <i>Dahe, soctie gni</i>.<br/>
+(le <i>Papias</i> est un glossaire, l'apparente citation est plutôt une glose, la balise &lt;oVar&gt; n'est pas essentielle.)
+<div class="xml"><span class="text">Papias in cod. 7609 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_gloss">gloss</a>&gt;</span><span class=""><span class="open">&lt;<a class="el" href="#el_oVar">oVar</a>&gt;</span><span class="text">Dahe</span><span class="close">&lt;/<a class="el" href="#el_oVar">oVar</a>&gt;</span></span><span class="text">, soctie gni</span><span class="close">&lt;/<a class="el" href="#el_gloss">gloss</a>&gt;</span></span></div>
+            </p>
+        <p><b>EXTERNARE</b> [...] Glossar. Gall. Lat. ex Cod. reg. 7684 : <i>Externare, Estranger</i>.<br/>
+(extrait d'un glossaire français — latin, rappel de la vedette et mot étranger)
+<div class="xml"><span class="text">Glossar. Gall. Lat. ex Cod. reg. 7684 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_gloss">gloss</a>&gt;</span><span class=""><span class="open">&lt;<a class="el" href="#el_oVar">oVar</a>&gt;</span><span class="text">Externare</span><span class="close">&lt;/<a class="el" href="#el_oVar">oVar</a>&gt;</span></span><span class="text">, </span><span class=""><span class="open">&lt;<a class="el" href="#el_foreign">foreign</a> <b class="xml att">xml:lang</b>="<code class="val">fro</code>"&gt;</span><span class="text">Estranger</span><span class="close">&lt;/<a class="el" href="#el_foreign">foreign</a>&gt;</span></span><span class="close">&lt;/<a class="el" href="#el_gloss">gloss</a>&gt;</span></span><span class="text">.</span></div>
+            </p>
+        <p><b>EBEARE</b>, [...] apud Martinium : <i>Ebeo, <foreign xml:lang="grc">ἀπομαϰαρίξω</foreign></i>.
+<div class="xml"><span class="text">apud Martinium : </span><span class=""><span class="open">&lt;<a class="el" href="#el_gloss">gloss</a>&gt;</span><span class=""><span class="open">&lt;<a class="el" href="#el_oVar">oVar</a>&gt;</span><span class="text">Ebeo</span><span class="close">&lt;/<a class="el" href="#el_oVar">oVar</a>&gt;</span></span><span class="text">, </span><span class=""><span class="open">&lt;<a class="el" href="#el_foreign">foreign</a> <b class="xml att">xml:lang</b>="<code class="val">grc</code>"&gt;</span><span class="text">ἀπομαϰαρίξω</span><span class="close">&lt;/<a class="el" href="#el_foreign">foreign</a>&gt;</span></span><span class="close">&lt;/<a class="el" href="#el_gloss">gloss</a>&gt;</span></span><span class="text">.</span></div>
+        </p>
+      </dd>
+      <dt>Citations interrompues</dt>
+      <dd>
+        <p><b>ECCLESIA</b> [...] Et cap. 25 : <i>Catholicum vere esse</i> ait, <i>qui in fide fixus et stabilis permanens,
+quidquid universaliter antiquitus Ecclesiam Catholicam tenuisse cognoverit, id solum
+sibi tenendum credendumque decernit.</i><br/>
+(La citation a été reconnue automatiquement comme trop courte, car elle est interrompue par le mot “ait” en caractères droits dans l'italique)
+<div class="xml"><span class="text">Et cap. 25 : </span><span class=""><span class="open">&lt;<a class="el" href="#el_quote">quote</a>&gt;</span><span class="text">Catholicum vere esse </span><span class=""><span class="open">&lt;<a class="el" href="#el_mentioned">mentioned</a>&gt;</span><span class="text">ait</span><span class="close">&lt;/<a class="el" href="#el_mentioned">mentioned</a>&gt;</span></span><span class="text">, qui in fide fixus et stabilis permanens, quidquid universaliter antiquitus Ecclesiam Catholicam tenuisse cognoverit, id solum
+sibi tenendum credendumque decernit.</span><span class="close">&lt;/<a class="el" href="#el_quote">quote</a>&gt;</span></span></div>
+            </p>
+      </dd>
+    </dl>
+    <p>
+L'étiquetage de la langue des citations (latin médiéval ou ancien français)
+se fera d'abord par des procédés automatiques.
+        </p>
+  </div>
+  <section class="element rng" id="el_note"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-note.html" target="TEI">note</a>&gt;</h1></header><div class="documentation">
+Dans une citation, mots qui rompent le cours de la phrase 
+(glose, correction d'un auteur ultérieur...).
+Beaucoup de notes ont été repérées automatiquement car paraissant 
+entre parenthèses, avec au moins
+un segment de caractères droits.
+Attention, certaines citations comportent des parenthèses, dont le texte est entièrement en italique, ce ne sont pas des gloses du lexicographe.
+Attention, certaines gloses avec caractères droits comportent aussi des mots en italique,
+comme un titre, ou un mot en mention.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_8" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">@rend</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> | <a href="#el_q" title="A &#xE9;t&#xE9; utilis&#xE9; dans certaines notes attribu&#xE9;es (dans des citations) qui pr&#xE9;cisaient des corrections.">q</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> </td></tr></table>
+        
+      
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_corr"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-corr.html" target="TEI">corr</a>&gt;</h1></header><div class="documentation">
+Dans certaines citations, un lexicographe postérieur propose parfois des corrections pour
+des erreurs apprentes du texte transcrit, la responsabilité de ces corrections est conservée.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_8" title="Attribution d'un ajout selon la l&#xE9;gende sigl&#xE6;, sera appliqu&#xE9;e automatiquement sur les puces.">@rend</a></td></tr><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table></section>
+  <section class="define rng" id="def_inline"><header class="define rng">inline</header><div class="documentation">Ce groupe contient les segments de textes sémantiquement qualifiés, il ne doit surtout pas comporter d'italique.</div><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_emph_0">emph</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_lb" title="Saut de ligne (ne pas en abuser).">lb</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </section>
+  <section class="element rng" id="el_ref"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-ref.html" target="TEI">ref</a>&gt;</h1></header><div class="documentation">Balisage des renvois, par exemple des formes en italique précédées de "Vide...".</div><table class="grammar"><tr><th>Attributs</th><td> (<a href="#att_cRef" title="Lien vers une vedette existante, mais avec plusieurs homographes.">@cRef</a> |  <a href="#att_target" title="Lien v&#xE9;rifi&#xE9;, cible correspondant &#xE0; une vedette num&#xE9;ris&#xE9;e.">@target</a>) <a href="#att_xml-lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">@xml:lang</a>?</td></tr><tr><th>Contenu</th><td><i> text() </i>, (  )</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table>
+        <section class="attribute rng" id="att_cRef"><header class="attribute rng">@cRef</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation">Lien vers une vedette existante, mais avec plusieurs homographes.</div>
+        </section>
+        <section class="attribute rng" id="att_target"><header class="attribute rng">@target</header><table class="grammar"><tr><th>Valeur</th><td><i> text() </i></td></tr></table>
+          <div class="documentation">Lien vérifié, cible correspondant à une vedette numérisée.</div>
+        </section>
+      
+        
+      </section>
+  <section class="element rng" id="el_foreign"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-foreign.html" target="TEI">foreign</a>&gt;</h1></header><div class="documentation">
+Mot ou passage en langue autre que latine qui n'a pas encore été balisé,
+afin de porter un attribut de langue.
+Le balisage du grec est requis à l'étape du balisage typographique.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_xml-lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">@xml:lang</a></td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )*</td></tr><tr><th>Usage</th><td> <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  <section class="attribute rng" id="att_xml-lang"><header class="attribute rng">@xml:lang</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+        
+        <li class="value"><em>"lat"</em> : Latin médiéval européen (citations)</li>
+        <li class="value"><em>"grc"</em> : grec ancien (jusqu'à 1453)</li>
+        
+        
+        <li class="value"><em>"fro"</em> : français ancien (842-ca.1400) - French, Old</li>
+        
+        <li class="value"><em>"pro"</em> : occitan ancien (jusqu'à 1500) - Provençal</li>
+        <li class="value"><em>"bre"</em> : breton</li>
+        <li class="value"><em>"gmh"</em> : allemand, moyen haut (ca. 1050-1500) ; Glossarium : german. Teuton</li>
+        <li class="value"><em>"dum"</em> : néerlandais, moyen (ca. 1050-1350) ; Glossarium : Belgis</li>
+        
+        <li class="value"><em>"ang"</em> : anglo-saxon (ca. 450-1100) ; Glossarium : saxon</li>
+        <li class="value"><em>"ita"</em> : italien</li>
+        <li class="value"><em>"spa"</em> : espagnol, castillan</li>
+        <li class="value"><em>"pol"</em> : polonais</li>
+        <li class="value"><em>"heb"</em> : hébreu</li>
+        <li class="value"><em>"xxx"</em> : langue indéterminée</li>
+      </ul></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">lang</a><span class="defin"> &gt;  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  <a href="#el_ref" title="Balisage des renvois, par exemple des formes en italique pr&#xE9;c&#xE9;d&#xE9;es de &quot;Vide...&quot;.">ref</a>  <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a>  <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a>  &lt;</span></span></td></tr></table>
+      <div class="documentation">
+      Liste de code de langues ayant pu être repérées, à peu près en ordre de fréquence.
+      Pourra s'étendre.
+      Le latin aurait besoin d'être spécifié par une locale plus large, <b>lat-EU-med</b> signifie latin médiéval (Europe),
+      <b>lat-FR-mod</b> qualifie les gloses latines des lexicographes modernes. 
+      Cependant il reste à vérifier si ces valeurs sont XML valides.
+      Les formes et les citations françaises sont généralement en ancien français (médiéval) <b>fro</b>.
+      Utiliser xxx pour une langue non reconnaissable.
+    </div>
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+    </section>
+  <section class="element rng" id="el_gloss"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-gloss.html" target="TEI">gloss</a>&gt;</h1></header><div class="documentation">Pour les extraits cités de glossaire, paraissant en italique.</div><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> | <a href="#el_oVar" title="Rappel de la vedette, parfois fl&#xE9;chie, souvent dans les citations, remarqu&#xE9; typographiquement (itali">oVar</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> | <a href="#el_mentioned" title="Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique d">mentioned</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> )*</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="define rng" id="def_emph"><header class="define rng">emph</header><div class="documentation">Segment mis en valeur, notamment en droit dans l'italique d'une citation.</div><table class="grammar"><tr><th>Contenu</th><td><a href="#el_emph_0">emph</a></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table><section class="element rng" id="el_emph_0"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-emph.html" target="TEI">emph</a>&gt;</h1></header><table class="grammar"><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span></td></tr></table></section></section>
+  <section class="element rng" id="el_title"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-title.html" target="TEI">title</a>&gt;</h1></header><div class="documentation">Titre d'ouvrage</div><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_oVar"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-oVar.html" target="TEI">oVar</a>&gt;</h1></header><div class="documentation">Rappel de la vedette, parfois fléchie, souvent dans les citations, remarqué typographiquement (italique dans droit ou droit dans italique).</div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_xml-lang" title="Liste de code de langues ayant pu &#xEA;tre rep&#xE9;r&#xE9;es, &#xE0; peu pr&#xE8;s en ordre de fr&#xE9;quence. Pourra s'&#xE9;tendre.">@xml:lang</a>?</td></tr><tr><th>Contenu</th><td><i> text() </i>, </td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> </td></tr></table>
+        
+      </section>
+  <section class="element rng" id="el_num"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-num.html" target="TEI">num</a>&gt;</h1></header><div class="documentation">Nombres, arabes ou latins, souvent pointés (doivent contenir le point).</div><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_hi-sup" title="exposant">hi<small class="att"> rend="sup"</small></a> | <a href="#el_hi-sub" title="indice">hi<small class="att"> rend="sub"</small></a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_form" title="Le Glossarium distingue typographiquement des mots en t&#xEA;te d'alin&#xE9;a. La pr&#xE9;sentation ne donne aucun ">form</a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_q"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-q.html" target="TEI">q</a>&gt;</h1></header><div class="documentation">A été utilisé dans certaines notes attribuées (dans des citations) qui précisaient
+      des corrections.</div><table class="grammar"><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a> </td></tr></table></section>
+  <section class="element rng" id="el_mentioned"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-mentioned.html" target="TEI">mentioned</a>&gt;</h1></header><div class="documentation">
+Mot en mention, dans une citation, dans une addition : petites capitales dans l'italique, italique dans le droit.
+      </div><table class="grammar"><tr><th>Attributs</th><td><a href="#att_rend_9">@rend</a>?</td></tr><tr><th>Contenu</th><td><i> text() </i></td></tr><tr><th>Usage</th><td> <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_gloss" title="Pour les extraits cit&#xE9;s de glossaire, paraissant en italique.">gloss</a> </td></tr></table>
+        <section class="attribute rng" id="att_rend_9"><header class="attribute rng">@rend</header><table class="grammar"><tr><th>Valeur</th><td>[ <em class="value">"sc"</em> |<em class="value">"i"</em> ]</td></tr></table>
+          
+            
+            
+          
+        </section>
+      </section>
+  
+  <div class="documentation">
+    <h2 id="bloc-linguistique">Enrichissements pour exploitation linguistique.</h2>
+    <p>
+    Les déclarations sont des enrichissements nécessaires à l'exploitation linguistique du dictionnaire.
+    </p>
+  </div>
+  <section class="element rng" id="el_cit"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-cit.html" target="TEI">cit</a>&gt;</h1></header><div class="documentation">
+Les références bibliographiques encadrées
+pourront être rattachées au texte cité et enchassées dans un élément cit.
+Cet élément TEI n'acceptant pas le contenu mêlé,
+les connecteurs comme “:” ou “in” seront encadrés par l’élément <tt>&lt;lbl&gt;</tt>.
+      </div><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> | <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> | <a href="#el_lbl_0">lbl</a> )+</td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> </td></tr></table>
+        
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_bibl"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-bibl.html" target="TEI">bibl</a>&gt;</h1></header><div class="documentation">
+Référence bibliographique, texte mêlé, avec quelques distinctions typographiques 
+ou fonctionnelles.
+L'encadrement des références est un chantier projeté mais pas planifié.
+Le processus d'un balisage automatique n'est pas assuré.
+Le souhait à terme serait que toute attestation soit référencée par une date de temps et de lieu, 
+un type de texte, et un auteur quand c'est pertinent.
+      </div><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> | <a href="#el_foreign" title="Mot ou passage en langue autre que latine qui n'a pas encore &#xE9;t&#xE9; balis&#xE9;, afin de porter un attribut ">foreign</a> | <a href="#el_num" title="Nombres, arabes ou latins, souvent point&#xE9;s (doivent contenir le point).">num</a> | <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a> | <a href="#el_title" title="Titre d'ouvrage">title</a> | <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> | <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_cit" title="Les r&#xE9;f&#xE9;rences bibliographiques encadr&#xE9;es pourront &#xEA;tre rattach&#xE9;es au texte cit&#xE9; et enchass&#xE9;es dans ">cit</a> </td></tr></table>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_name"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-name.html" target="TEI">name</a>&gt;</h1></header><div class="documentation">Sigle d'une référence (auteur ou titre), en italique dans l'édition orfininale.</div><table class="grammar"><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> )*</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_persName-author"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-persName.html" target="TEI">persName<small class="att"> type="author"</small></a>&gt;</h1></header><div class="documentation">Auteur d'une référence</div><table class="grammar"><tr><th>Attributs</th><td><a href="#el_persName-author">@type="author"</a></td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_abbr" title="Balise les abr&#xE9;viations, par exemple dans une r&#xE9;f&#xE9;rence bibliographique. Sert notamment &#xE0; contenir l">abbr</a> )*</td></tr><tr><th>Usage</th><td> <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  <section class="element rng" id="el_abbr"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-abbr.html" target="TEI">abbr</a>&gt;</h1></header><div class="documentation">Balise les abréviations, par exemple dans une référence bibliographique.
+Sert notamment à contenir les lettres en exposant, ou les points qui ne sont pas des frontières de phrases.
+Certaines abbréviations peuvent être en petites capitales.
+</div><table class="grammar"><tr><th>Attributs</th><td> <a href="#att_rend_10">@rend</a>?</td></tr><tr><th>Contenu</th><td>( <i> text() </i> | <a href="#el_hi-sup" title="exposant">hi<small class="att"> rend="sup"</small></a> )*, </td></tr><tr><th>Usage</th><td> <a href="#el_hi-i" title="Italique, mot ou expression avec souvent une fonction. Un segment en italique ne doit g&#xE9;n&#xE9;ralement (">hi<small class="att"> rend="i"</small></a>  <a href="#el_note" title="Dans une citation, mots qui rompent le cours de la phrase (glose, correction d'un auteur ult&#xE9;rieur..">note</a>  <span class="defex"><a class="define" href="#def_inline" title="Ce groupe contient les segments de textes s&#xE9;mantiquement qualifi&#xE9;s, il ne doit surtout pas comporter">inline</a><span class="defin"> &gt;  <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_add" title="Ajouts &#xE9;ditoriaux, apparaissant entre crochets. Cet encadrement presque automatique a fourni des rep">add</a>  <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a>  <a href="#el_p" title="Certaines citations longues requi&#xE8;rent une division en paragraphes. Ce cas est rare, et concernent d">p</a>  <a href="#el_cell">cell</a>  <a href="#el_item">item</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a>  &lt;</span></span> <a href="#el_title" title="Titre d'ouvrage">title</a>  <a href="#el_bibl" title="R&#xE9;f&#xE9;rence bibliographique, texte m&#xEA;l&#xE9;, avec quelques distinctions typographiques ou fonctionnelles. ">bibl</a>  <a href="#el_name" title="Sigle d'une r&#xE9;f&#xE9;rence (auteur ou titre), en italique dans l'&#xE9;dition orfininale.">name</a>  <a href="#el_persName-author" title="Auteur d'une r&#xE9;f&#xE9;rence">persName<small class="att"> type="author"</small></a> </td></tr></table>
+        
+          
+          
+        
+      
+        <section class="attribute rng" id="att_rend_10"><header class="attribute rng">@rend</header><table class="grammar"><tr><th>Valeur</th><td><ul class="values">
+            <li class="value"><em>"sc"</em> : "SmallCaps" petites capitales</li>
+          </ul></td></tr></table>
+          <div class="documentation"/>
+          
+            
+          
+        </section>
+      </section>
+  <section class="element rng" id="el_figure"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-figure.html" target="TEI">figure</a>&gt;</h1></header><div class="documentation">L'élément figure permet de signaler une illustration ou une disposition typographique demandant la consultation de l'image.</div><table class="grammar"><tr><th>Contenu</th><td><i>empty()</i></td></tr><tr><th>Usage</th><td> <a href="#el_dictScrap" title="Alin&#xE9;a. Les articles du &#x201C;Glossarium&#x201D; sont tr&#xE8;s peu syst&#xE9;matiques. Ce serait une erreur d'interpr&#xE9;ter">dictScrap</a>  <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table></section>
+  <section class="element rng" id="el_lg"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-lg.html" target="TEI">lg</a>&gt;</h1></header><div class="documentation"><b>Groupe de vers</b> - Certaines citations longues
+      peuvent proposer plusieurs stances</div><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_l" title="Ligne dans une citation en vers. Attention, certains distiques ont un vers plus long que le suivant,">l</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )+</td></tr><tr><th>Usage</th><td> <a href="#el_quote" title="Texte cit&#xE9; rattachable &#xE0; une r&#xE9;f&#xE9;rence bibliographique. Le but de ce balisage est surtout de r&#xE9;unir ">quote</a> </td></tr></table>
+        
+          
+          
+        
+      </section>
+  
+  <section class="define rng" id="def_tei"><header class="define rng">tei</header><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_element_0">element</a> |  <a href="#def_tei">@xml:id</a> |  <a href="#def_tei">@attribute</a> | <i> text() </i> )*</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_tei">tei</a><span class="defin"> &gt;  <a href="#el_element_0">element</a>  <a href="#el_teiHeader">teiHeader</a>  &lt;</span></span></td></tr></table>
+      
+        <section class="element rng" id="el_element_0"><header class="element rng"><h1>&lt;<a>element</a>&gt;</h1></header><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_element_0">element</a> |  <a href="#def_tei">@xml:id</a> |  <a href="#def_tei">@attribute</a> | <i> text() </i> )*</td></tr><tr><th>Usage</th><td> <span class="defex"><a class="define" href="#def_tei">tei</a><span class="defin"> &gt;  <a href="#el_element_0">element</a>  <a href="#el_teiHeader">teiHeader</a>  &lt;</span></span></td></tr></table></section>
+        
+        
+        
+      
+    </section>
+  
+    <section class="element rng" id="el_TEI"><header class="element rng"><h1>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-TEI.html" target="TEI">TEI</a>&gt;</h1></header><table class="grammar"><tr><th>Contenu</th><td><a href="#el_teiHeader">teiHeader</a>, <a href="#el_text">text</a></td></tr><tr><th>Usage</th><td>Elément racine</td></tr></table><section class="element rng" id="el_teiHeader"><header class="element rng"><h2>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-teiHeader.html" target="TEI">teiHeader</a>&gt;</h2></header><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_element_0">element</a> |  <a href="#def_tei">@xml:id</a> |  <a href="#def_tei">@attribute</a> | <i> text() </i> )*</td></tr><tr><th>Usage</th><td> <a href="#el_TEI">TEI</a> </td></tr></table></section><section class="element rng" id="el_text"><header class="element rng"><h2>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-text.html" target="TEI">text</a>&gt;</h2></header><table class="grammar"><tr><th>Contenu</th><td><a href="#el_body">body</a></td></tr><tr><th>Usage</th><td> <a href="#el_TEI">TEI</a> </td></tr></table><section class="element rng" id="el_body"><header class="element rng"><h3>&lt;<a href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/ref-body.html" target="TEI">body</a>&gt;</h3></header><table class="grammar"><tr><th>Contenu</th><td>( <a href="#el_entry" title="&#x201C;Article&#x201D; du dictionnaire. Le corps visible du dictionnaire est s&#xE9;par&#xE9; en alin&#xE9;as, dont certains com">entry</a> | <span class="more"><a class="ref" href="#def_breaks">breaks</a><a class="toggle" onclick="o=this.parentNode;o.className=(o.className=='more')?'less':'more'"> </a><span class="refin"> ( <a href="#el_cb" title="Conservation des sauts de colonne de l'&#xE9;dition imprim&#xE9;e, notamment pour lien &#xE0; l'image de la colonne">cb</a> | <a href="#el_pb" title="Conservation des sauts de page de l'&#xE9;dition imprim&#xE9;e originale.">pb</a> )</span></span> )+</td></tr><tr><th>Usage</th><td> <a href="#el_text">text</a> </td></tr></table>
+            
+              
+              
+            
+          </section></section></section>
+  
+  <div class="documentation">
+    <ul>
+      <li>[FG] 2010-01 — Documentation publique</li>
+      <li>[FG] 2009-10 — Conformité TEI P5 stricte</li>
+      <li>[FG] 2009-04 — Présentation de la démarche au TEI Council (ENS Lyon)</li>
+      <li>[FG] 2008-06 — Révisions pour deuxième tranche</li>
+      <li>[FG] 2007-10 — Modélisation initiale pour cahier des charges première tranche</li>
+    </ul>
+  </div>
+</article>
+  </body>
+</html>

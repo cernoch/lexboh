@@ -1,0 +1,257 @@
+﻿/* encoding="UTF8"
+Styles pour un diaporama en html
+*/
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+body {
+  font-family:"Lucida Sans", "Luxi Sans", sans-serif;
+  /* font-family: "Georgia", "DejaVu Serif", Times, "Times New Roman", serif; */
+}
+#footer,
+#header {
+  position:fixed; 
+  width:100%;
+  font-size:15px;
+  font-family:Arial, sans-serif;
+  background:#A73136;
+  color:#FFFFFF;
+}
+#footer,
+#header a {
+  color:#FFFFFF;
+}
+#header {
+  top:0;
+}
+#footer {
+  bottom:0;
+}
+
+table.dias {
+  width:100%;
+}
+table.dias tr {
+  height:100%;
+}
+td.dia  {
+  border:1px solid #A73136;
+  height:100%;
+  vertical-align:middle;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  padding: 2em 1em;
+  overflow:auto; 
+  overflow-x: hidden; 
+  overflow-y: auto; 
+  vertical-align: middle;
+}
+
+.dia ul {
+  text-align:left;
+  color:#A73136;
+}
+.dia ul li {
+  color:#000000;
+  line-height:105%;
+  margin-top:0;
+  margin-bottom:0;
+  list-style: circle;
+}
+.dia img {
+  margin-left:1em;
+}
+table {
+  border-collapse: collapse; 
+}
+td, th {
+  padding:0;
+}
+a {
+  text-decoration:none;
+  color:#A73136;
+}
+a:hover {
+  text-decoration:underline;
+}
+h1 {
+  color:#A73136;
+  text-shadow:0.15ex 0.15ex #CDC;
+  font-size:120%;
+  text-align:center;
+  font-weight:bold;
+  margin: 0 0 1em 0;
+  padding:0 1em 0 2em;
+}
+h1 a {
+  color:#A73136;
+}
+h2 {
+  color:#666666;
+  font-size:105%;
+  font-weight:normal;
+  text-align:center;
+  font-style:italic;
+}
+h2 a {
+  color:#666666;
+}
+.author {
+  font-variant: small-caps;
+}
+.title {
+  font-style:italic;
+}
+
+table.table caption {
+  font-size:larger;
+  background-color:#93A070; /* Highlight */
+  color:#FFFFFF;
+  font-weight:bold;
+  text-align:left;
+  padding: 2px 2em 2px 2em;
+}
+
+table.table {
+  border: 1px solid;
+  border-color:#93A070; /* Highlight */
+  font-family:Arial, sans-serif;
+  font-size:smaller;
+  margin-bottom:2em;
+}
+
+table.table td {
+  border:none;
+  vertical-align:top;
+  border-top:#CCCCCC 1px solid;
+  border-left:#CCCCCC 1px solid;
+  padding:0.1ex 1ex;
+}
+thead {
+  background-color:#F5F5DC; /* button */
+}
+tr.even {
+  background-color:#F8FFCC; /* info */
+}
+th {
+  text-align:left;
+}
+table.table th {
+  text-align:left;
+  border:1px outset;
+  padding-left:1ex;
+  padding-right:1ex;
+  border-color:#F8FFCC; /* button */
+  background-color:#F5F5DC;
+}
+
+table.table pre {
+  font-size:110%;
+  white-space:normal;
+}
+
+
+/* boutons */
+a.but {
+  font-family: monospace;
+  font-size:100%;
+  font-weight:bold;
+  cursor:pointer;
+  cursor:hand;
+  width:1.5em;
+  height:1.5em;
+  background:#A73136;
+  margin:2px 0 0 0;
+  padding:1px 0.5ex;
+  border:#CCCCCC 1px solid;
+  text-decoration:none;
+  -moz-border-radius:0.5ex;
+  -webkit-border-radius:0.5ex:
+  border-radius:0.5ex;
+  color:#FFFFFF;
+}
+a.but:hover {
+  color:#000000 !important;
+  background:#E2DED0;
+  text-decoration:none !important;
+}
+
+
+
+
+
+
+p {
+  text-align:justify;
+}
+pre {
+  font-size:85%;
+  font-family:"Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", monospace;
+}
+pre a {
+  font-size:120%;
+}
+sup,
+sub {
+	height: 0;
+	line-height:1.2em;
+	vertical-align: baseline;
+	position: relative;
+}
+sup {
+	_vertical-align: top;
+	bottom:1ex;
+}
+
+sub {
+	_vertical-align: bottom;
+	top: .5ex;
+}
+
+/* Moz style props
+
+opacity  background  height  textAlign  right  bottom  fontSize  backgroundColor  letterSpacing  verticalAlign  color  top  width  
+display  zIndex  position  left  visibility  length  cssText  getPropertyValue  getPropertyCSSValue  removeProperty  getPropertyPriority 
+setProperty  item  parentRule  azimuth  
+captionSide  clear  clip  content  counterIncrement  counterReset  cue  cueAfter  cueBefore  cursor  direction  elevation  
+emptyCells  cssFloat  font  fontFamily  fontSizeAdjust  fontStretch  fontStyle  fontVariant  fontWeight  lineHeight  
+markerOffset  marks  maxHeight  maxWidth  minHeight  minWidth  orphans  
+overflow overflowX  overflowY
+page  pageBreakAfter  pageBreakBefore  pageBreakInside  pause  pauseAfter  pauseBefore  pitch  pitchRange  quotes  
+richness  size  
+stress  tableLayout  textDecoration  textIndent  textShadow  textTransform  unicodeBidi  voiceFamily  volume  
+whiteSpace  widows  wordSpacing  
+
+MozAppearance  MozBackgroundClip  MozBackgroundInlinePolicy  MozBackgroundOrigin  MozBinding  
+  MozBoxAlign  MozBoxDirection  MozBoxFlex  MozBoxOrient  MozBoxOrdinalGroup  MozBoxPack  MozBoxSizing  
+    MozFloatEdge  
+  MozForceBrokenImageIcon  MozImageRegion  MozMarginEnd  MozMarginStart  
+  MozOpacity    
+MozPaddingEnd  MozPaddingStart  MozUserFocus  MozUserInput  MozUserModify  MozUserSelect  
+    imeMode      MozStackSizing  MozBoxShadow  MozBorderImage  
+  wordWrap  MozTransform  MozTransformOrigin  MozWindowShadow  
+
+backgroundAttachment  backgroundImage  backgroundPosition  backgroundRepeat  
+border  borderCollapse  borderColor  borderSpacing  borderStyle  borderTop  borderRight  borderBottom  borderLeft  borderTopColor  
+  borderRightColor  borderBottomColor  borderLeftColor  borderTopStyle  borderRightStyle  borderBottomStyle  borderLeftStyle  
+  borderTopWidth  borderRightWidth  borderBottomWidth  borderLeftWidth  borderWidth  
+MozBorderBottomColors  MozBorderLeftColors  MozBorderRightColors  MozBorderTopColors  MozBorderRadius  
+  MozBorderRadiusTopleft  MozBorderRadiusTopright  MozBorderRadiusBottomleft  MozBorderRadiusBottomright
+  MozBorderEnd  MozBorderEndColor  MozBorderEndStyle  MozBorderEndWidth  MozBorderStart
+  MozBorderStartColor  MozBorderStartStyle  MozBorderStartWidth
+outline  outlineColor  outlineStyle  outlineWidth outlineOffset
+MozOutline MozOutlineColor  MozOutlineRadius  MozOutlineRadiusTopleft  MozOutlineRadiusTopright  MozOutlineRadiusBottomleft  
+  MozOutlineRadiusBottomright  MozOutlineStyle  MozOutlineWidth  MozOutlineOffset  
+margin  marginTop  marginRight  marginBottom  marginLeft  
+padding  paddingTop  paddingRight  paddingBottom  paddingLeft
+MozColumnCount  MozColumnWidth  MozColumnGap MozColumnRule  MozColumnRuleWidth
+  MozColumnRuleStyle  MozColumnRuleColor
+listStyle  listStyleImage  listStylePosition  listStyleType  
+speak  speakHeader  speakNumeral  speakPunctuation  speechRate
+
+*/
