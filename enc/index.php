@@ -80,7 +80,7 @@ if (count($result)) {
 	echo $result[0]['head'];
 }
 else {
-	echo "<title>Glossarium mediae et infimae latinitatis, du Cange et al., Niort, L. Favre, 1883-87.</title>\n";
+	echo "<title>Latinitatis medii aevi lexicon</title>\n";
 }
 ?>
   </head>
@@ -91,9 +91,10 @@ else {
         <div id="header">
           <a href="http://elec.enc.sorbonne.fr/"><span id="logo"></span></a>
           <address>
-            <a href="<?php echo Web::pathbase()?>?clear=1"><span class="author">Du Cange</span> <i>et al.</i>, <i>Glossarium mediæ et infimæ latinitatis</i>. Niort : L. Favre, 1883-1887.</a>
+            <a href="<?php echo Web::pathbase()?>?clear=1">Latinitatis medii aevi lexicon Bohemorum – Slovník středověké latiny v českých zemích, I–II. Praha: Academia 1992. Elektronická verse 1.0‏</a>
           </address>
         </div>
+<?php /*        
         <div id="toolbar">
           <a class="but" href="#" id="imageCache" title="Cacher le panneau"
 style="float:left;"
