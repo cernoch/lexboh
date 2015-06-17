@@ -326,7 +326,7 @@ form.q {
 	margin-top:20px;
 	margin-bottom:2em;
 }
-form.q div.border {
+/*form.q div.border {
 	padding:1ex 0;
 	text-align:center;
 	margin:0 auto;
@@ -340,7 +340,7 @@ form.q div.border {
 	-moz-border-radius:1em;
 	-webkit-border-radius:1em:
 	border-radius:1em;
-}
+}*/
 form.q label {
 	cursor:hand;
 	cursor:pointer;
@@ -358,7 +358,7 @@ input.input {
 	width:340px;
 	border:3px solid #E2DED0;
 	border-left-width:2em;
-	border-right-width:1em;
+	border-right-width:8em;
 	color:#A73136;
 	background:#FFFFFF;
 	font-weight:bold;
@@ -375,7 +375,7 @@ input.radio {
 }
 input.submit {
 	cursor:pointer;
-	margin-left:-2ex;
+	margin-left:-8em;
 }
 
 form.q label.checked {
