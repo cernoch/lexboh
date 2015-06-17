@@ -52,7 +52,7 @@ if(isset($_REQUEST['q'])) $solr=solrQuery();
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="http://quicherat.enc.sorbonne.fr/diple/theme/enc/enc.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="enc.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Web::pathbase(); ?>ducange.css"/>
     <script src="<?php echo Web::pathbase(); ?>lib/Cookie.js" type="text/javascript">//</script>
 <?php
