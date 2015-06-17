@@ -113,6 +113,7 @@ onclick="window.document.body.className=window.document.body.className.replace(/
         <div id="ariane">&#xA0;
           <?php  print $cookieCrumb; ?>
         </div>
+*/ ?>        
         <div <?php  echo ' class="'.$vue.'"'; if($vue!="doc") echo ' id="article"';?>>
 <?php
 // search form
@@ -245,6 +246,7 @@ if(!field) {
 "
 >
   <div class="border">
+'/*
 	<label>
 	  <input' . (($f == '')?' checked="checked"':'') . ' name="f" value="" class="radio" type="radio"/> consulter un article
 	</label>
@@ -254,6 +256,7 @@ if(!field) {
     <label>
       <input name="exact"'. ($exact?' checked="checked"':'') .' type="checkbox"> formes exactes
     </label>
+*/.'
     <div class="middle">
       <input id="q" class="input" onkeyup="return qKey(this)" autocomplete="off" accesskey="q" name="q" size="40"  value="' . $q . '"/>
       <input type="submit" class="submit" value="Rechercher"/>
@@ -264,7 +267,7 @@ if(!field) {
         <input' . (($f == 'forms')?' checked="checked"':'') . ' name="f" value="forms" class="radio" type="radio"/>
         vedettes et renvois </label>
 */
-	.'<label>
+/*	.'<label>
         <input' . (($f == 'lat')?' checked="checked"':'') . ' name="f" value="lat" class="radio" type="radio"/>
         citations latines </label>
 
@@ -275,7 +278,7 @@ if(!field) {
       <label>
         <input' . (($f == 'grc')?' checked="checked"':'') . ' name="f" value="grc" class="radio" type="radio"/>
         citations grecques </label>
-
+*/.'
   </div>
 </form>
 ';
