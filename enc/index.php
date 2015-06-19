@@ -19,20 +19,20 @@ $hist=new CookieCrumb("glossarium");
 if (Web::param("clear")) {
 	$hist->reset();
 	setcookie("side");
-	$side="image.php";
+	$side="about:blank";
 }
 else if (isset($_COOKIE["side"])) {
 	$side=$_COOKIE["side"];
 }
 // documentation
 else if (strpos($pathinfo, '/') !== false) {
-	$side="image.php";
+	$side="about:blank";
 }
 else if($pathinfo) {
 	$side="suggest.php?q=".$pathinfo;
 }
 else {
-	$side="image.php";
+	$side="about:blank";
 }
 
 
@@ -54,6 +54,7 @@ if(isset($_REQUEST['q'])) $solr=solrQuery();
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="enc.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo Web::pathbase(); ?>ducange.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Trykker&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <script src="<?php echo Web::pathbase(); ?>lib/Cookie.js" type="text/javascript">//</script>
 <?php
 // SQLite result, populate by a query and given
@@ -85,15 +86,27 @@ else {
 ?>
   </head>
   <body class="ducange<?php // if($vue=="doc") echo " fixed" ?>">
-	<script type="text/javascript">window.document.body.className+=' '+Cookie.get('noImage'); </script>
-    <div id="container">
-      <iframe name="side" id="side" src="<?php echo Web::pathbase(),$side; ?>" height="100%" width="328" frameborder="0" scrolling="auto"> </iframe>
-        <div id="header">
-          <a href="http://elec.enc.sorbonne.fr/"><span id="logo"></span></a>
-          <address>
+    <script type="text/javascript">window.document.body.className+=' '+Cookie.get('noImage'); </script>
+    <div id="header">
+      <div class="container">
+      	<div style="background-color: #4086a9; height: 130px; padding: 10px 0 0 340px">
+      	  <address class="kks">
+      	    <a href="http://www.ics.cas.cz/">Kabinet pro klasická studia</a>
+      	  </address>
+      	  <address class="fuav">
+      	    <a href="http://www.ics.cas.cz/">Filosofického ústavu AV ČR, V.V.I</a>
+      	  </address>
+          <address class="lexicon">
             <a href="<?php echo Web::pathbase()?>?clear=1">Latinitatis medii aevi lexicon Bohemorum – Slovník středověké latiny v českých zemích, I–II. Praha: Academia 1992. Elektronická verse 1.0‏</a>
           </address>
         </div>
+      	<div style="background-color: #cbc9c6; height: 10px">
+      	</div>
+      </div>
+    </div>
+    <div style="position: absolute; left:0; top:150px; right:0px; bottom:0px">
+    <div class="container">
+      <iframe name="side" id="side" src="<?php echo Web::pathbase(),$side; ?>" frameborder="0" scrolling="auto"> </iframe>
 <?php /*        
         <div id="toolbar">
           <a class="but" href="#" id="imageCache" title="Cacher le panneau"
@@ -115,7 +128,7 @@ onclick="window.document.body.className=window.document.body.className.replace(/
           <?php  print $cookieCrumb; ?>
         </div>
 */ ?>        
-        <div <?php  echo ' class="'.$vue.'"'; if($vue!="doc") echo ' id="article"';?>>
+        <div <?php  echo ' class="'.$vue.'"'; if($vue!="doc") echo ' id="article"';?> stlyle="position:absolute; top:0; left:0; bottom:0; right:0">
 <?php
 // search form
 print $searchForm;
@@ -166,8 +179,7 @@ else {
         <a class="img" href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/REF-ELEMENTS.html" target="blank" title="Sources en XML/TEI P5" ><img align="right" src="<?php echo Web::pathbase(); ?>img/tei.png" align="top" alt="TEI" /></a>
         <a class="img" href="http://www.enc.sorbonne.fr" target="blank" title="Contributions de l’École de des chartes"><img align="right" src="<?php echo Web::pathbase(); ?>img/enc.png" align="top" alt="ENC"  /></a>
       </div>
-      <div id="bord_gauche"> </div>
-      <div id="bord_droit"> </div>
+    </div>
     </div>
 	<script src="<?php echo Web::pathbase(); ?>ducange.js" type="text/javascript">//</script>
 	<script src="<?php echo Web::pathbase(); ?>lib/Form.js" type="text/javascript">//</script>

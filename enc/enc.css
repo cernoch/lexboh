@@ -16,7 +16,7 @@ Ici, couleurs etc.
 
 
 body {
-	background:white;
+	background:#F2F2F2;
 	color:#222;
 	margin:0;
 	padding:0;
@@ -27,7 +27,7 @@ body {
 
 /* [FG] 2010-01 expérience faîte, impossible de virer container pour tirer les bordures.
 Si padding pour les bordures ici, ne pas utiliser width:100% pour header et footer en absolute */
-#container {
+.container {
 	/*
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -37,25 +37,34 @@ Si padding pour les bordures ici, ne pas utiliser width:100% pour header et foot
 	margin-right:2.5%;
 	width:95%;
 	*/
-	left:2.5%;
+	/*left:2.5%;
 	right:2.5%;
 	padding:0 11px 0 11px;
-	position:absolute;
+	position:absolute;*/
 	min-height:100%;
+	width: 1100px;
+	margin:0px auto;
+	position:relative;
+}
+
+body > .container {
+	position: relative;
+	bottom: 0px;
+	background: url("img/c-bg2.gif") no-repeat 18% 0;
 }
 
 #header {
-	margin:0;
-	padding:0 0 0 15px;
 	height:50px;
-	background-image:url('img/banner.png');
-	background-repeat:no-repeat;
-	background-position: 86px 0 ;
-	background-color:#971716;
-  color:#FFFFFF;
+	background-color:#006699;
+	color:#FFFFFF;
 	text-align: left;
-  border-bottom:#FFFFFF;
+	border-bottom:1px solid #FFFFFF;
+	font-family: Trykker, serif;
 }
+#header address {
+	font-variant: small-caps;
+}
+
 #nav {
 	float:left; /* [FG 2010-01] pose problèmes avec des clears, mais casse tout*/
 	/* position:absolute; [FG] non*/
@@ -161,33 +170,6 @@ body.iframe #nav {
 	border:none;
 }
 
-
-#bord_gauche {
-	/* [GB 2009-10] dégradés blanc à gris sur le coté gauche*/
-	position:absolute;
-	left:0;
-	top:0;
-	z-index:20;
-	height:100%;
-	width:11px;
-	background-color:#FFFFFF;
-	background-image:url('img/bord_gauche.png');
-	background-repeat: repeat-y;
-	background-position:top right;
-}
-
-#bord_droit {
-	/* [GB 2009-10] dégradés blanc à gris sur le coté droit*/
-	position:absolute;
-	right:0;
-	top:0;
-	z-index:20;
-	width:11px;
-	height:100%;
-	background-image:url('img/bord_droit.png');
-	background-repeat: repeat-y;
-	background-position:top right;
-}
 a.logo:hover {
   -webkit-box-shadow:none;
      -moz-box-shadow:none;
@@ -373,53 +355,19 @@ a.next {
 	padding:1px 20px 1px 5px;
 }
 
-
-/** Entête */
-#header a {
-	color:#FFFFFF;
-}
-#header h1 {
-	margin:5px 2em 0 2em;
-	font-size:20px;
-	font-family:serif;
-	font-weight:normal;
-	font-style:italic;
-	text-align: left;
-	color:#FFFFFF;
-	text-shadow:1px 1px #000000;
-	filter:alpha(opacity=80);
-  opacity:0.8;
-	background-color:#971716;
-}
-#header h1 a {
-	color:#FFFFFF;
-}
-#header h1 small {
-  text-shadow:none;
-  font-style:normal;
-  font-weight:normal;
-}
-#header address {
-	margin-top:28px;
-	padding-left:30px; /* repousser du bord */
-	float:left;
-	opacity:0.8;
-	filter:alpha(opacity=80);
-	background-color:#971716;
-}
 #header address a {
-	opacity:1;
-	filter:alpha(opacity=100);
 	color:#FFF;
-	font-size:16px;
-	text-shadow:2px 2px #040;
+}
+
+#header address a:hover {
+	text-decoration: none;
 }
 /** Habillage du chemin de fer */
 
 #ariane a,
 .ariane a {
 	text-decoration: none;
-  border-bottom:none;
+	border-bottom:none;
 	color : #5b5b5b;
 }
 
@@ -483,7 +431,7 @@ a.next {
   font-weight:bold;
   font-style:normal;
   text-shadow:1px 1px #FFF;
-  background:transparent;
+  background:#971716;
   border:none;
 }
 /* cas où la table est inscrite dans une iframe

@@ -18,10 +18,15 @@ a:hover {
 	left:0;
 	right:0;
 	top:0;
+	height:150px;
 }
 #side {
-	float:left;
-	position:fixed;
+	position:absolute;
+	width: 328px;
+	top: 0;
+	bottom: 0px;
+	height: 100%;
+	border-right:solid 1px #b3b3b3;
 }
 /* Vue doc schema */
 body.fixed #side {
@@ -40,18 +45,19 @@ body.noImage #imageCache {
 	display:none;
 }
 
-/* conteneur des documents ou des résultats de recherche */
-#container {
-	min-height:100%;
-}
 #article {
-	margin:0;
-	padding:0 2em 2em 360px;
+	margin: 0;
+	padding: 2em;
 	box-sizing: content-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	height:100%;
+	position:absolute;
+	left: 328px;
+	top: 0;
+	bottom: 0px;
+	right: 0px;
+	height: 100%;
 }
 body.noImage #article {
 				padding-left:2em;
@@ -103,12 +109,24 @@ body.fixed #ariane {
 	padding-left:330px;
 }
 
-#logo {
-	right:3ex;
-}
 #header address {
-	padding-left:3ex;
 	font-style:normal;
+}
+
+#header address.kks {
+	font-size: 40px;
+	line-height: 45px;
+}
+
+#header address.fuav {
+	font-size: 25px;
+	line-height: 28px;
+	margin-bottom: 5px;
+}
+
+#header address.lexicon {
+	font-size: 20px;
+	line-height: 20px;
 }
 
 /* Un message entre les articles du glossaire français et du glossaire latin */
@@ -323,7 +341,6 @@ a.ref {
 /* le formulaire (centré) */
 form.q {
 	text-align:center;
-	margin-top:20px;
 	margin-bottom:2em;
 }
 /*form.q div.border {
@@ -450,23 +467,25 @@ div.result select {
 /* la colonne d'images */
 body.suggest,
 body.image {
-	background:#FFFFFF;
+	background:#F2F2F2;
 	font-family:Arial, sans-serif;
 	/*
 	background-position: left;
 	background-image:url('degradeGD.png');
 	*/
 	background-position:right;
+	/*
 	background-image:url('img/degradeDG.png');
+	*/
 	background-repeat:repeat-y;
-	border-right:solid 1px #b3b3b3;
 	margin:0;
-	padding:60px 10px 0 10px;
-	line-height:13px;
-	font-size:12px;
+	padding:1em;
+	line-height:17px;
+	font-size:15px;
+	overflow:hidden;
 }
 body.suggest a {
-	color:#808080;
+	color:#404040;
 	display:block;
 }
 body.suggest a:hover {
