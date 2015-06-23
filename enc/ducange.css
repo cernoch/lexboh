@@ -8,10 +8,8 @@ a:hover {
 
 /*	Dispositions spécifiques */
 #footer {
-	left:0;
-	right:0;
-	position:absolute;
-	bottom:0;
+	margin-left:330px;
+	padding: 0;
 }
 #header {
 	position:relative;
@@ -46,18 +44,7 @@ body.noImage #imageCache {
 }
 
 #article {
-	margin: 0;
 	padding: 2em;
-	box-sizing: content-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	position:absolute;
-	left: 328px;
-	top: 0;
-	bottom: 0px;
-	right: 0px;
-	height: 100%;
 }
 body.noImage #article {
 				padding-left:2em;
@@ -230,7 +217,7 @@ a.next {
 }
 /* ligne bibliographique en tête d'article, largeur max */
 .entry_bibl {
-	background:#E2DED0;
+	background:#F5F5F5;
 	padding: 2px 2px 2px 3em;
 	min-height:31px;
 }
@@ -343,21 +330,12 @@ form.q {
 	text-align:center;
 	margin-bottom:2em;
 }
-/*form.q div.border {
-	padding:1ex 0;
+form.q div.border {
 	text-align:center;
-	margin:0 auto;
-	width:540px;
-	border-color:#BA9;
-	border-width:1px;
-	border-left-style:solid;
-	border-right-style:solid;
-	color:#888;
+	margin:-2em -2em 0 -2em;
+	padding:2em;
 	background:#F5F5F5;
-	-moz-border-radius:1em;
-	-webkit-border-radius:1em:
-	border-radius:1em;
-}*/
+}
 form.q label {
 	cursor:hand;
 	cursor:pointer;
@@ -373,16 +351,14 @@ div.middle {
 input.input {
 	font-family:Arial, sans-serif;
 	width:340px;
-	border:3px solid #E2DED0;
+	border:10px solid #ff9944;
 	border-left-width:2em;
-	border-right-width:8em;
-	color:#A73136;
+	border-right-width:10em;
+	color:#994400;
 	background:#FFFFFF;
 	font-weight:bold;
-	font-size:16px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	padding:2px 13px 2px 3px;
+	font-size:18px;
+	padding:5px 25px 5px 25px;
 	/*
 	border-radius:3px; fond gris avec Opera
 	*/
@@ -392,7 +368,9 @@ input.radio {
 }
 input.submit {
 	cursor:pointer;
-	margin-left:-8em;
+	margin-left:-10em;
+	font-size:14px;
+	padding:5px 10px 5px 10px;
 }
 
 form.q label.checked {

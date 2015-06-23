@@ -128,7 +128,7 @@ onclick="window.document.body.className=window.document.body.className.replace(/
           <?php  print $cookieCrumb; ?>
         </div>
 */ ?>        
-        <div <?php  echo ' class="'.$vue.'"'; if($vue!="doc") echo ' id="article"';?> stlyle="position:absolute; top:0; left:0; bottom:0; right:0">
+        <div <?php  echo ' class="thecontent '.$vue.'"'; if($vue!="doc") echo ' id="article"';?>>
 <?php
 // search form
 print $searchForm;
@@ -172,12 +172,13 @@ else {
 }
 ?>
       </div>
-      <div id="footer">
-        <a class="link" href="http://www.enc.sorbonne.fr/">© École nationale des chartes</a>
+      <div id="footer">© 
+        <a class="link img" href="http://www.enc.sorbonne.fr" title="Contributions de l’École de des chartes"><img src="<?php echo Web::pathbase(); ?>img/enc.png" style="vertical-align: middle" alt="ENC" /></a>
+        <a class="link" href="mailto:jan.odstrcilik@gmail.com">JO</a> &amp;
+        <a class="link" href="mailto:radomir.cernoch@gmail.com">RČ</a>
         <a class="link licence" href="licence">Licence</a>
         <a class="link credits" href="credits">Crédits</a>
-        <a class="img" href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/REF-ELEMENTS.html" target="blank" title="Sources en XML/TEI P5" ><img align="right" src="<?php echo Web::pathbase(); ?>img/tei.png" align="top" alt="TEI" /></a>
-        <a class="img" href="http://www.enc.sorbonne.fr" target="blank" title="Contributions de l’École de des chartes"><img align="right" src="<?php echo Web::pathbase(); ?>img/enc.png" align="top" alt="ENC"  /></a>
+        <a class="link img" href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/REF-ELEMENTS.html" target="blank" title="Sources en XML/TEI P5" ><img style="vertical-align: middle" src="<?php echo Web::pathbase(); ?>img/tei.png" align="top" alt="TEI" /></a>
       </div>
     </div>
     </div>
@@ -272,7 +273,7 @@ if(!field) {
 */.'
     <div class="middle">
       <input id="q" class="input" onkeyup="return qKey(this)" autocomplete="off" accesskey="q" name="q" size="40"  value="' . $q . '"/>
-      <input type="submit" class="submit" value="Rechercher"/>
+      <input type="submit" class="submit" value="Hledat"/>
     </div>
 '
 /*
