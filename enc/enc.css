@@ -547,16 +547,11 @@ input.vide {
 	padding:1px 1ex 1px 1ex;
 }
 #footer a.link:hover {
-	background:#EEEEEE;
 	border-bottom:none;
 	box-shadow:none;
 	-moz-box-shadow:none;
 	-webkit-box-shadow:none;
 	text-decoration:none;
-}
-
-#footer a.link.img:hover {
-	background:#FFFFFF;
 }
 
 .nettoyer {

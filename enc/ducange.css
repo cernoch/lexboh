@@ -284,16 +284,12 @@ tt.square {
 /* l'adresse */
 a.form {
 	font-family:"Trebuchet MS", sans-serif;
-	background:#FFFFFF;
-	color:#A73136;
-	font-size:14px;
+	color:#315ba7;
+	font-size:18px;
 	border:none;
-	/*
-	padding-left:0.5ex;
-	margin-left:-2em;
-	border-left:#CC9999 1px solid;
-	border-top:#CC9999 1px solid;
-	*/
+}
+a.form:visited {
+	color:#315ba7;
 }
 .b {
 	font-weight:bold;
