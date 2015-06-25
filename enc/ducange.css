@@ -285,7 +285,7 @@ tt.square {
 a.form {
 	font-family:"Trebuchet MS", sans-serif;
 	color:#315ba7;
-	font-size:18px;
+	/*font-size:18px;*/
 	border:none;
 }
 a.form:visited {
