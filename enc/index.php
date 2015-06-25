@@ -77,12 +77,14 @@ if ($pathinfo) {
 		$result=$sql->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
+/*
 if (count($result)) {
 	echo $result[0]['head'];
 }
 else {
+*/
 	echo "<title>Latinitatis medii aevi lexicon</title>\n";
-}
+//}
 ?>
   </head>
   <body class="ducange<?php // if($vue=="doc") echo " fixed" ?>">
