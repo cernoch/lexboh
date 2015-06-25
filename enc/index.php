@@ -274,6 +274,7 @@ if(!field) {
     </label>
 */.'
     <div class="middle">
+      <input name="f" value="" type="hidden"/>
       <input id="q" class="input" onkeyup="return qKey(this)" autocomplete="off" accesskey="q" name="q" size="40"  value="' . $q . '"/>
       <input type="submit" class="submit" value="Hledat"/>
     </div>
