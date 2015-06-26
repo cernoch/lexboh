@@ -156,7 +156,7 @@ else if (count($result)) {
 	}
 }
 else if ($pathinfo) {
-	echo '<h1>Pas d’entrée pour ce mot dans le <i>Du Cange</i>.</h1>';
+	echo '<h1>Heslo nebylo nalezeno.</h1>';
 }
 // search results
 else if ($solr) {
