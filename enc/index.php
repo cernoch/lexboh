@@ -174,12 +174,10 @@ else {
 }
 ?>
       </div>
-      <div id="footer">© 
-        <a class="link img" href="http://www.enc.sorbonne.fr" title="Contributions de l’École de des chartes"><img src="<?php echo Web::pathbase(); ?>img/enc.png" style="vertical-align: middle" alt="ENC" /></a>
-        <a class="link" href="mailto:jan.odstrcilik@gmail.com">JO</a> &amp;
-        <a class="link" href="mailto:radomir.cernoch@gmail.com">RČ</a>
-        <a class="link licence" href="licence">Licence</a>
-        <a class="link credits" href="credits">Crédits</a>
+      <div id="footer">
+      	© <a class="link img" href="http://www.enc.sorbonne.fr" title="Contributions de l’École de des chartes"><img src="<?php echo Web::pathbase(); ?>img/enc.png" style="vertical-align: middle" alt="ENC" /></a>,
+        © <a class="link img" href="http://www.ics.cas.cz/">Filosofický ústav AV ČR, v. v. i.</a>
+        <!--<a class="link" href="mailto:">JO</a> &amp; <a class="link" href="mailto:radomir.cernoch@gmail.com">RČ</a>-->
         <a class="link img" href="http://www.tei-c.org/release/doc/tei-p5-doc/fr/html/REF-ELEMENTS.html" target="blank" title="Sources en XML/TEI P5" ><img style="vertical-align: middle" src="<?php echo Web::pathbase(); ?>img/tei.png" align="top" alt="TEI" /></a>
       </div>
     </div>
