@@ -96,10 +96,10 @@ else {
       	    <a href="http://www.ics.cas.cz/">Kabinet pro klasická studia</a>
       	  </address>
       	  <address class="fuav">
-      	    <a href="http://www.ics.cas.cz/">Filosofického ústavu AV ČR, V.V.I</a>
+      	    <a href="http://www.flu.ics.cas.cz/">Filosofického ústavu AV ČR, V.V.I</a>
       	  </address>
           <address class="lexicon">
-            <a href="<?php echo Web::pathbase()?>?clear=1">Latinitatis medii aevi lexicon Bohemorum – Slovník středověké latiny v českých zemích, I–II. Praha: Academia 1992. Elektronická verse 1.0‏</a>
+            <a href=".?clear=1">Latinitatis medii aevi lexicon Bohemorum – Slovník středověké latiny v českých zemích, I–II. Praha: Academia 1992. Elektronická verse 1.0</a>
           </address>
         </div>
       	<div style="background-color: #cbc9c6; height: 10px">
